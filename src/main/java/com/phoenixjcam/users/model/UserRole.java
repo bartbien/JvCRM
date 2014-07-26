@@ -1,4 +1,4 @@
-package com.mkyong.users.model;
+package com.phoenixjcam.users.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -14,16 +14,19 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "user_roles", catalog = "test", uniqueConstraints = @UniqueConstraint(columnNames = { "role", "username" }))
-public class UserRole{
+public class UserRole
+{
 
 	private Integer userRoleId;
 	private User user;
 	private String role;
 
-	public UserRole() {
+	public UserRole()
+	{
 	}
 
-	public UserRole(User user, String role) {
+	public UserRole(User user, String role)
+	{
 		this.user = user;
 		this.role = role;
 	}
@@ -31,30 +34,36 @@ public class UserRole{
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "user_role_id", unique = true, nullable = false)
-	public Integer getUserRoleId() {
+	public Integer getUserRoleId()
+	{
 		return this.userRoleId;
 	}
 
-	public void setUserRoleId(Integer userRoleId) {
+	public void setUserRoleId(Integer userRoleId)
+	{
 		this.userRoleId = userRoleId;
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "username", nullable = false)
-	public User getUser() {
+	public User getUser()
+	{
 		return this.user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(User user)
+	{
 		this.user = user;
 	}
 
 	@Column(name = "role", nullable = false, length = 45)
-	public String getRole() {
+	public String getRole()
+	{
 		return this.role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(String role)
+	{
 		this.role = role;
 	}
 

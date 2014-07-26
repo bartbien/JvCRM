@@ -37,7 +37,7 @@
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-	<h1>Spring Security Login Form (Database + Hibernate Authentication)</h1>
+	<h1>Spring Security Custom Login Form (XML)</h1>
 
 	<div id="login-box">
 
@@ -50,9 +50,12 @@
 			<div class="msg">${msg}</div>
 		</c:if>
 
-		<form name='loginForm'
-			action="<c:url value='/login' />" method='POST'>
+<!--  j_spring_security_check is a Servlet where the 
+actual authentication is made and you must map the action of your login form to this Servlet. -->
 
+		<!-- <form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'> -->
+		
+		<form name='loginForm' action="<c:url value='/login' />" method='POST'>
 			<table>
 				<tr>
 					<td>User:</td>
@@ -63,15 +66,16 @@
 					<td><input type='password' name='password' /></td>
 				</tr>
 				<tr>
-					<td colspan='2'><input name="submit" type="submit"
-						value="submit" /></td>
+					<td colspan='2'><input name="submit" type="submit" value="Sign in" /></td>
 				</tr>
 			</table>
 
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 		</form>
+		
+		<input type="button" value="Sign up" onclick="location.replace('<%= request.getContextPath() %>/join')" />
+		
 	</div>
 
 </body>

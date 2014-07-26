@@ -1,4 +1,4 @@
-package com.mkyong.users.service;
+package com.phoenixjcam.users.service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,37 +15,42 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.mkyong.users.dao.UserDao;
-import com.mkyong.users.model.UserRole;
+import com.phoenixjcam.users.dao.UserDao;
+import com.phoenixjcam.users.model.UserRole;
 
 @Service("userDetailsService")
-public class MyUserDetailsService implements UserDetailsService {
+public class MyUserDetailsService implements UserDetailsService
+{
 
 	@Autowired
 	private UserDao userDao;
 
-	@Transactional(readOnly=true)
-	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
-	
-		com.mkyong.users.model.User user = userDao.findByUserName(username);
+	@Transactional(readOnly = true)
+	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException
+	{
+
+		com.phoenixjcam.users.model.User user = userDao.findByUserName(username);
 		List<GrantedAuthority> authorities = buildUserAuthority(user.getUserRole());
 
 		return buildUserForAuthentication(user, authorities);
-		
+
 	}
 
 	// Converts com.mkyong.users.model.User user to
 	// org.springframework.security.core.userdetails.User
-	private User buildUserForAuthentication(com.mkyong.users.model.User user, List<GrantedAuthority> authorities) {
+	private User buildUserForAuthentication(com.phoenixjcam.users.model.User user, List<GrantedAuthority> authorities)
+	{
 		return new User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true, authorities);
 	}
 
-	private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles) {
+	private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles)
+	{
 
 		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 
 		// Build user's authorities
-		for (UserRole userRole : userRoles) {
+		for (UserRole userRole : userRoles)
+		{
 			setAuths.add(new SimpleGrantedAuthority(userRole.getRole()));
 		}
 
