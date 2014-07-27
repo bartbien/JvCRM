@@ -19,7 +19,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "users", catalog = "test")
+@Table(name = "users", catalog = "loginsystem")
 public class User
 {
 	@Id

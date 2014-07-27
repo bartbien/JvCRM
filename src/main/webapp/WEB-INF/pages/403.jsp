@@ -14,6 +14,8 @@
 			</h2>
 		</c:otherwise>
 	</c:choose>
+	
+	<input type="button" value="Back to login" onclick="location.replace('<%=request.getContextPath()%>/login')" />
 
 </body>
 </html>

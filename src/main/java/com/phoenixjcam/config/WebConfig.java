@@ -55,7 +55,7 @@ public class WebConfig
 	{
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/test");
+		ds.setUrl("jdbc:mysql://localhost:3306/loginsystem");
 		ds.setUsername("root");
 		return ds;
 	}
