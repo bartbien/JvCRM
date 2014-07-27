@@ -19,7 +19,7 @@ import com.phoenixjcam.users.dao.UserDao;
 import com.phoenixjcam.users.model.UserRole;
 
 @Service("userDetailsService")
-public class MyUserDetailsService implements UserDetailsService
+public class UserDetailsServiceImpl implements UserDetailsService
 {
 
 	@Autowired
@@ -28,16 +28,13 @@ public class MyUserDetailsService implements UserDetailsService
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException
 	{
-
 		com.phoenixjcam.users.model.User user = userDao.findByUserName(username);
 		List<GrantedAuthority> authorities = buildUserAuthority(user.getUserRole());
 
 		return buildUserForAuthentication(user, authorities);
-
 	}
 
-	// Converts com.mkyong.users.model.User user to
-	// org.springframework.security.core.userdetails.User
+	// Converts User user to org.springframework.security.core.userdetails.User
 	private User buildUserForAuthentication(com.phoenixjcam.users.model.User user, List<GrantedAuthority> authorities)
 	{
 		return new User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true, authorities);
@@ -45,7 +42,6 @@ public class MyUserDetailsService implements UserDetailsService
 
 	private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles)
 	{
-
 		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 
 		// Build user's authorities
@@ -58,5 +54,4 @@ public class MyUserDetailsService implements UserDetailsService
 
 		return Result;
 	}
-
 }

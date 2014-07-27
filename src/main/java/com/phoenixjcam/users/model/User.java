@@ -10,14 +10,29 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * db User model (one user to many roles)
+ * <br><br>
+ * Model Object or Value Object - This object is simple POJO containing get/set methods to store data retrieved using DAO class.
+ * 
+ * @author Bart88
+ *
+ */
 @Entity
 @Table(name = "users", catalog = "test")
 public class User
 {
-
+	@Id
+	@Column(name = "username", unique = true, nullable = false, length = 45)
 	private String username;
+	
+	@Column(name = "password", nullable = false, length = 60)
 	private String password;
+	
+	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
 	public User()
@@ -39,8 +54,6 @@ public class User
 		this.userRole = userRole;
 	}
 
-	@Id
-	@Column(name = "username", unique = true, nullable = false, length = 45)
 	public String getUsername()
 	{
 		return this.username;
@@ -51,7 +64,7 @@ public class User
 		this.username = username;
 	}
 
-	@Column(name = "password", nullable = false, length = 60)
+	
 	public String getPassword()
 	{
 		return this.password;
@@ -61,8 +74,7 @@ public class User
 	{
 		this.password = password;
 	}
-
-	@Column(name = "enabled", nullable = false)
+	
 	public boolean isEnabled()
 	{
 		return this.enabled;
@@ -72,8 +84,7 @@ public class User
 	{
 		this.enabled = enabled;
 	}
-
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	
 	public Set<UserRole> getUserRole()
 	{
 		return this.userRole;
@@ -83,5 +94,4 @@ public class User
 	{
 		this.userRole = userRole;
 	}
-
 }

@@ -13,7 +13,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 
-// 
+/**
+ *  Customize security <br>
+ *  <a href="http://docs.spring.io/spring-security/site/docs/3.2.4.RELEASE/reference/htmlsingle/">http://docs.spring.io/spring-security/site/docs/3.2.4.RELEASE/reference/htmlsingle/</a>
+ * @author Bart88
+ *
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter 
@@ -29,17 +34,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 	
+	// http://docs.spring.io/spring-security/site/docs/3.2.3.RELEASE/reference/htmlsingle/#nsa-password-encoder
 	@Bean
 	public PasswordEncoder passwordEncoder()
 	{
 		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		
 		return encoder;
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception 
 	{
-
 		http
 		.authorizeRequests()
 		.antMatchers("/admin")
@@ -55,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 		.logout()
 		.logoutSuccessUrl("/login?logout")
 		.and()
-		.csrf()
+		.csrf() // Cross-site request forgery (a one-click attack or session riding )
 		.and()
 		.exceptionHandling()
 		.accessDeniedPage("/403");

@@ -60,22 +60,20 @@ public class LoginController
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public ModelAndView accesssDenied()
 	{
-
 		ModelAndView model = new ModelAndView();
 
 		// check if user is login
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
 		if (!(auth instanceof AnonymousAuthenticationToken))
 		{
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
 			System.out.println(userDetail);
 
 			model.addObject("username", userDetail.getUsername());
-
 		}
 
 		model.setViewName("403");
 		return model;
-
 	}
 }

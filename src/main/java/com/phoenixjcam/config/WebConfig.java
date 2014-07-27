@@ -15,14 +15,21 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-// 
+/**
+ * <strong> specify session factory, hibernate properties, data source, hibernate transaction, view resolver </strong>
+ * <br>
+ *  ComponentScan({ "com.phoenixjcam.*" }) annotation means 
+ *  exactly the same as xml -> context:component-scan base-package="com.*" in dispatcher-servlet.xml
+ *  
+ * @author Bart88
+ *
+ */
 @EnableWebMvc
 @Configuration
-// below annotation = <context:component-scan base-package="com.*" /> dispatcher-servlet.xml
 @ComponentScan({ "com.phoenixjcam.*" })
 @EnableTransactionManagement
 @Import({ SecurityConfig.class })
-public class AppConfig
+public class WebConfig
 {
 
 	@Bean
@@ -46,7 +53,6 @@ public class AppConfig
 	@Bean(name = "dataSource")
 	public BasicDataSource dataSource()
 	{
-
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
 		ds.setUrl("jdbc:mysql://localhost:3306/test");

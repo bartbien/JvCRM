@@ -12,13 +12,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * db UserRole model (many roles to one user)
+ * <br><br>
+ * Model Object or Value Object - This object is simple POJO containing get/set methods to store data retrieved using DAO class.
+ * 
+ * @author Bart88
+ *
+ */
 @Entity
 @Table(name = "user_roles", catalog = "test", uniqueConstraints = @UniqueConstraint(columnNames = { "role", "username" }))
 public class UserRole
 {
-
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "user_role_id", unique = true, nullable = false)
 	private Integer userRoleId;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "username", nullable = false)
 	private User user;
+
+	@Column(name = "role", nullable = false, length = 45)
 	private String role;
 
 	public UserRole()
@@ -31,9 +46,6 @@ public class UserRole
 		this.role = role;
 	}
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "user_role_id", unique = true, nullable = false)
 	public Integer getUserRoleId()
 	{
 		return this.userRoleId;
@@ -44,8 +56,6 @@ public class UserRole
 		this.userRoleId = userRoleId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "username", nullable = false)
 	public User getUser()
 	{
 		return this.user;
@@ -56,7 +66,6 @@ public class UserRole
 		this.user = user;
 	}
 
-	@Column(name = "role", nullable = false, length = 45)
 	public String getRole()
 	{
 		return this.role;
@@ -66,5 +75,4 @@ public class UserRole
 	{
 		this.role = role;
 	}
-
 }

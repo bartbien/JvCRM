@@ -14,13 +14,13 @@ CREATE TABLE user_roles (
   CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users (username));
 
 INSERT INTO users(username,password,enabled)
-VALUES ('mkyong','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y', true);
+VALUES ('bart','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y', true);
 INSERT INTO users(username,password,enabled)
-VALUES ('alex','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y', true);
+VALUES ('phoenix','$2a$10$04TVADrR6/SPLBjsK0N30.Jf5fNjBugSACeGv1S69dZALR7lSov0y', true);
 
 INSERT INTO user_roles (username, role)
-VALUES ('mkyong', 'ROLE_USER');
+VALUES ('bart', 'ROLE_USER');
 INSERT INTO user_roles (username, role)
-VALUES ('mkyong', 'ROLE_ADMIN');
+VALUES ('bart', 'ROLE_ADMIN');
 INSERT INTO user_roles (username, role)
-VALUES ('alex', 'ROLE_USER');
+VALUES ('phoenix', 'ROLE_USER');
