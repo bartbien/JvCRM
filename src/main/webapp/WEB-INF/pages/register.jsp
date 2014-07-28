@@ -45,7 +45,9 @@
 	<div id="login-box">
 
 		<h3>Create your personal account</h3>
-		<form name='signupForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
+		<!-- <form name='signupForm' action="<c:url value='/j_spring_security_check' />" method='POST'> -->
+		
+		<form name='signupForm' action="<c:url value='/register' />" method='POST'>
 
 			<table>
 				<tr>
@@ -58,7 +60,7 @@
 				</tr>
 				<tr>
 					<td>Confirm password:</td>
-					<td><input type='password' name='password' /></td>
+					<td><input type='password' name='passwordAgain' /></td>
 				</tr>
 				<tr>
 					<td colspan='2'><input name="submit" type="submit" value="Sign up" /></td>

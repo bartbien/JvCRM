@@ -21,9 +21,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
  */
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter 
+public class AuthorizeUrlsSecurityConfig extends WebSecurityConfigurerAdapter 
 {
-
 	@Autowired
 	@Qualifier("userDetailsService")
 	UserDetailsService userDetailsService;
@@ -48,15 +47,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	{
 		http
 		.authorizeRequests()
-		.antMatchers("/admin")
-		.access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/admin").hasRole("ADMIN")  // || -> .access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/dashboard").hasRole("USER")
 		.and()
 		.formLogin()
 		.loginPage("/login")
 		.failureUrl("/login?error")
 		.usernameParameter("username")
 		.passwordParameter("password")
-		.defaultSuccessUrl("/admin")
+		.defaultSuccessUrl("/dashboard")
 		.and()
 		.logout()
 		.logoutSuccessUrl("/login?logout")

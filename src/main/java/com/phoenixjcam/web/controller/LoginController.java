@@ -19,18 +19,18 @@ public class LoginController
 		ModelAndView model = new ModelAndView();
 		
 		model.addObject("title", "Spring Security");
-		model.addObject("message", "admin page");
+		model.addObject("message", "only admin has rights to show this page");
 		model.setViewName("admin");
 
 		return model;
 	}
 	
-	@RequestMapping(value = "/join", method = RequestMethod.GET)
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView signUpPage()
 	{
 		ModelAndView model = new ModelAndView();
 		
-		model.setViewName("join");
+		model.setViewName("register");
 
 		return model;
 	}
@@ -74,6 +74,27 @@ public class LoginController
 		}
 
 		model.setViewName("403");
+		return model;
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView register(
+			@RequestParam(value = "error", required = false) String error)
+	{
+		ModelAndView model = new ModelAndView();
+		if (error != null)
+		{
+			model.addObject("error", "Invalid username!");
+		}
+		
+		// if password != passwordConfirm return 
+		
+		// else add user to db
+		
+		// if everything is fine return dashboard  page
+		
+		model.setViewName("dashboard");
+
 		return model;
 	}
 }

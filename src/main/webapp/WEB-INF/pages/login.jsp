@@ -74,7 +74,7 @@ actual authentication is made and you must map the action of your login form to 
 
 		</form>
 		
-		<input type="button" value="Sign up" onclick="location.replace('<%= request.getContextPath() %>/join')" />
+		<input type="button" value="Sign up" onclick="location.replace('<%= request.getContextPath() %>/register')" />
 		
 	</div>
 
