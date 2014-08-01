@@ -2,7 +2,7 @@ package com.phoenixjcam.config.core;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import com.phoenixjcam.config.WebConfig;
+import com.phoenixjcam.config.WebConfigurer;
 
 /**
  * The Spring Web model-view-controller (MVC) framework 
@@ -17,7 +17,7 @@ public class AnnotationConfigDispatcherServletInitializer extends AbstractAnnota
 	@Override
 	protected Class<?>[] getRootConfigClasses()
 	{
-		return new Class[] { WebConfig.class };
+		return new Class[] { WebConfigurer.class };
 	}
 
 	// the configuration classes for the dispatcher servlet application context 

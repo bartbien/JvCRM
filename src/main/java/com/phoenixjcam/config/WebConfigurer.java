@@ -28,8 +28,8 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @ComponentScan({ "com.phoenixjcam.*" })
 @EnableTransactionManagement
-@Import({ AuthorizeUrlsSecurityConfig.class })
-public class WebConfig
+@Import({ WebSecurityConfigurer.class })
+public class WebConfigurer
 {
 
 	@Bean

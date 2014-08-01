@@ -46,6 +46,11 @@
 		<c:if test="${not empty error}">
 			<div class="error">${error}</div>
 		</c:if>
+		
+		<c:if test="${not empty userCreated}">
+			<div class="msg">${userCreated}</div>
+		</c:if>
+		
 		<c:if test="${not empty msg}">
 			<div class="msg">${msg}</div>
 		</c:if>
@@ -59,11 +64,11 @@ actual authentication is made and you must map the action of your login form to 
 			<table>
 				<tr>
 					<td>User:</td>
-					<td><input type='text' name='username'></td>
+					<td><input type='text' name='username' required="true"></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
-					<td><input type='password' name='password' /></td>
+					<td><input type='password' name='password' required="true"/></td>
 				</tr>
 				<tr>
 					<td colspan='2'><input name="submit" type="submit" value="Sign in" /></td>
