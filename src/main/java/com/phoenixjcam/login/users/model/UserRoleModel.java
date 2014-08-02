@@ -1,4 +1,4 @@
-package com.phoenixjcam.users.model;
+package com.phoenixjcam.login.users.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -21,8 +21,8 @@ import javax.persistence.UniqueConstraint;
  *
  */
 @Entity
-@Table(name = "user_roles", catalog = "loginsystem", uniqueConstraints = @UniqueConstraint(columnNames = { "role", "username" }))
-public class UserRole
+@Table(name = "user_roles", catalog = "loginsystem_tmp", uniqueConstraints = @UniqueConstraint(columnNames = { "role", "username" }))
+public class UserRoleModel
 {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -31,16 +31,16 @@ public class UserRole
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "username", nullable = false)
-	private User user;
+	private UserModel user;
 
 	@Column(name = "role", nullable = false, length = 45)
 	private String role;
 
-	public UserRole()
+	public UserRoleModel()
 	{
 	}
 
-	public UserRole(User user, String role)
+	public UserRoleModel(UserModel user, String role)
 	{
 		this.user = user;
 		this.role = role;
@@ -56,12 +56,12 @@ public class UserRole
 		this.userRoleId = userRoleId;
 	}
 
-	public User getUser()
+	public UserModel getUser()
 	{
 		return this.user;
 	}
 
-	public void setUser(User user)
+	public void setUser(UserModel user)
 	{
 		this.user = user;
 	}

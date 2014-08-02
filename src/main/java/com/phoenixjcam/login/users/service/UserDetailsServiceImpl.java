@@ -1,4 +1,4 @@
-package com.phoenixjcam.users.service;
+package com.phoenixjcam.login.users.service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,8 +15,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.phoenixjcam.users.dao.UserDao;
-import com.phoenixjcam.users.model.UserRole;
+import com.phoenixjcam.login.users.dao.UserDao;
+import com.phoenixjcam.login.users.model.UserRoleModel;
 
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService
@@ -28,24 +28,24 @@ public class UserDetailsServiceImpl implements UserDetailsService
 	@Transactional(readOnly = true)
 	public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException
 	{
-		com.phoenixjcam.users.model.User user = userDao.findByUserName(username);
+		com.phoenixjcam.login.users.model.UserModel user = userDao.findByUserName(username);
 		List<GrantedAuthority> authorities = buildUserAuthority(user.getUserRole());
 
 		return buildUserForAuthentication(user, authorities);
 	}
 
 	// Converts User user to org.springframework.security.core.userdetails.User
-	private User buildUserForAuthentication(com.phoenixjcam.users.model.User user, List<GrantedAuthority> authorities)
+	private User buildUserForAuthentication(com.phoenixjcam.login.users.model.UserModel user, List<GrantedAuthority> authorities)
 	{
 		return new User(user.getUsername(), user.getPassword(), user.isEnabled(), true, true, true, authorities);
 	}
 
-	private List<GrantedAuthority> buildUserAuthority(Set<UserRole> userRoles)
+	private List<GrantedAuthority> buildUserAuthority(Set<UserRoleModel> userRoles)
 	{
 		Set<GrantedAuthority> setAuths = new HashSet<GrantedAuthority>();
 
 		// Build user's authorities
-		for (UserRole userRole : userRoles)
+		for (UserRoleModel userRole : userRoles)
 		{
 			setAuths.add(new SimpleGrantedAuthority(userRole.getRole()));
 		}

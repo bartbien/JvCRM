@@ -1,4 +1,4 @@
-package com.phoenixjcam.users.model;
+package com.phoenixjcam.login.users.model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,42 +11,43 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- * db User model (one user to many roles)
- * <br><br>
- * Model Object or Value Object - This object is simple POJO containing get/set methods to store data retrieved using DAO class.
+ * db User model (one user to many roles) <br>
+ * <br>
+ * Model Object or Value Object - This object is simple POJO containing get/set methods to store data retrieved using
+ * DAO class.
  * 
  * @author Bart88
  *
  */
 @Entity
-@Table(name = "users", catalog = "loginsystem")
-public class User
+@Table(name = "users", catalog = "loginsystem_tmp")
+public class UserModel
 {
 	@Id
 	@Column(name = "username", unique = true, nullable = false, length = 45)
 	private String username;
-	
+
 	@Column(name = "password", nullable = false, length = 60)
 	private String password;
-	
+
 	@Column(name = "enabled", nullable = false)
 	private boolean enabled;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	private Set<UserRole> userRole = new HashSet<UserRole>(0);
 
-	public User()
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	private Set<UserRoleModel> userRole = new HashSet<UserRoleModel>(0);
+
+	public UserModel()
 	{
 	}
 
-	public User(String username, String password, boolean enabled)
+	public UserModel(String username, String password, boolean enabled)
 	{
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
 	}
 
-	public User(String username, String password, boolean enabled, Set<UserRole> userRole)
+	public UserModel(String username, String password, boolean enabled, Set<UserRoleModel> userRole)
 	{
 		this.username = username;
 		this.password = password;
@@ -64,7 +65,6 @@ public class User
 		this.username = username;
 	}
 
-	
 	public String getPassword()
 	{
 		return this.password;
@@ -74,7 +74,7 @@ public class User
 	{
 		this.password = password;
 	}
-	
+
 	public boolean isEnabled()
 	{
 		return this.enabled;
@@ -84,13 +84,13 @@ public class User
 	{
 		this.enabled = enabled;
 	}
-	
-	public Set<UserRole> getUserRole()
+
+	public Set<UserRoleModel> getUserRole()
 	{
 		return this.userRole;
 	}
 
-	public void setUserRole(Set<UserRole> userRole)
+	public void setUserRole(Set<UserRoleModel> userRole)
 	{
 		this.userRole = userRole;
 	}

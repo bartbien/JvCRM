@@ -2,8 +2,12 @@
 <%@page session="true"%>
 <html>
 <body>
-	<h1>Title : ${title}</h1>
+	<h1>TTitle : ${title}</h1>
 	<h1>Message : ${message}</h1>
+	
+	<c:if test="${not empty email}">
+		<h1>Email : ${email}</h1>
+	</c:if>
 
 	<c:url value="/logout" var="logoutUrl" />
 	
@@ -23,6 +27,22 @@
 			<a href="javascript:formSubmit()"> Logout</a>
 		</h2>
 	</c:if>
+	
+	<form name='email' action="${pageContext.request.contextPath}/email"  method="get">
+		<table>
+				<tr>
+					<td>User name:</td>
+					<td>
+						<input type='text' name='username' required="true">
+					</td>
+				</tr>
+				<tr>
+					<td colspan='2'>
+						<input name="submit" type="submit" value="Get email" />
+					</td>
+				</tr>
+			</table>
+	</form>
 
 </body>
 </html>

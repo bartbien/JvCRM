@@ -1,10 +1,10 @@
-package com.phoenixjcam.users.dao;
+package com.phoenixjcam.login.users.dao;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.phoenixjcam.users.model.User;
+import com.phoenixjcam.login.users.model.UserModel;
 
 /**
  * Data Access Object concrete class -This class implements above interface. <br>
@@ -20,10 +20,10 @@ public class UserDaoImpl implements UserDao
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public User findByUserName(String username)
+	public UserModel findByUserName(String username)
 	{
-		User users = new User();
-		users = (User) sessionFactory.getCurrentSession().createQuery("from User where username=?").setParameter(0, username).uniqueResult();
+		UserModel users = new UserModel();
+		users = (UserModel) sessionFactory.getCurrentSession().createQuery("from UserModel where username=?").setParameter(0, username).uniqueResult();
 		
 		if(!users.equals(null))
 		{
@@ -34,13 +34,4 @@ public class UserDaoImpl implements UserDao
 			return null;
 		}
 	}
-
-	@Override
-	public User getUser()
-	{
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	// + impl Dao
 }

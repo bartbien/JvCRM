@@ -36,8 +36,8 @@ public class WebConfigurer
 	public SessionFactory sessionFactory()
 	{
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource());
-		builder.scanPackages("com.phoenixjcam.users.model").addProperties(getHibernateProperties());
-
+		builder.scanPackages("com.phoenixjcam.login.users.model").addProperties(getHibernateProperties());
+		
 		return builder.buildSessionFactory();
 	}
 
@@ -55,7 +55,7 @@ public class WebConfigurer
 	{
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/loginsystem");
+		ds.setUrl("jdbc:mysql://localhost:3306/loginsystem_tmp");
 		ds.setUsername("root");
 		return ds;
 	}
