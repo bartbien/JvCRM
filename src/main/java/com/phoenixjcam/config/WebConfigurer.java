@@ -12,6 +12,8 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
@@ -29,7 +31,7 @@ import org.springframework.web.servlet.view.JstlView;
 @ComponentScan({ "com.phoenixjcam.*" })
 @EnableTransactionManagement
 @Import({ WebSecurityConfigurer.class })
-public class WebConfigurer
+public class WebConfigurer extends WebMvcConfigurerAdapter
 {
 
 	@Bean
@@ -77,4 +79,9 @@ public class WebConfigurer
 		return viewResolver;
 	}
 
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry)
+	{
+		registry.addResourceHandler("/res/**").addResourceLocations("/WEB-INF/res/");
+	}
 }

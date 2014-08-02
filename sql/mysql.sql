@@ -24,3 +24,4 @@ INSERT INTO user_roles (username, role)
 VALUES ('bart', 'ROLE_ADMIN');
 INSERT INTO user_roles (username, role)
 VALUES ('phoenix', 'ROLE_USER');
+
