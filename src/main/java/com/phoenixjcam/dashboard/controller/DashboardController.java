@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.phoenixjcam.login.users.dao.UserDaoImpl;
+import com.phoenixjcam.dashboard.users.model.UserInfoModel;
+import com.phoenixjcam.dashboard.users.service.UserInfoService;
 
 @Controller
 public class DashboardController
 {
 	@Autowired
-	UserDaoImpl userData;
+	UserInfoService userInfoService;
 	
 	// only for admin role
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
@@ -50,17 +51,18 @@ public class DashboardController
 		return model;
 	}
 	
-	// for all logged in users
+	// for all logged users
 	@RequestMapping(value = "/email", method = RequestMethod.GET)
 	public ModelAndView getEmail(
 			@RequestParam(value = "username", required = false) String username)
 	{
 		ModelAndView model = new ModelAndView();
+		UserInfoModel userInfoModel = (UserInfoModel)userInfoService.getUserInfo(username);
 		
-		//String email = userData.getUserEmail(username);
-
+		String email = userInfoModel.getEmail();
+		
 		model.addObject("title", "dashboard");
-		//model.addObject("email", email);
+		model.addObject("email", email);
 		model.setViewName("dashboard");
 
 		return model;
