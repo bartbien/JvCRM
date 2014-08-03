@@ -4,6 +4,15 @@
 	
 }
 
+#header-link {
+	color: #ff8080;
+}
+
+#header-user-panel{
+	text-align: right;
+	margin-right: 20px;
+}
+
 #leftColumn {
 	float: left;
 	margin-left: 20px;
@@ -37,7 +46,7 @@
 /* green main table style  */
 #customers {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-	width: 600px;
+	width: 650px;
 	border-collapse: collapse;
 }
 

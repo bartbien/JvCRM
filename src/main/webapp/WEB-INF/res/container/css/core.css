@@ -24,7 +24,7 @@
 	width: 1000px;
 	display: table;
 	height: 50px;
-	text-align: right;
+	text-align: center;
 	background-color: #454545;
 	background-image: url(images/clients.png), url(images/callcenter.png);
 	background-position: 10px 7px, 65px 5px;

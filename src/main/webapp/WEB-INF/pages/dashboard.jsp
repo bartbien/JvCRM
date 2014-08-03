@@ -34,6 +34,10 @@
 			expandedIndexes : [ 0, 1, 2, 3 ]
 		});
 	});
+
+	function formSubmit() {
+		document.getElementById("logoutForm").submit();
+	}
 </script>
 
 </head>
@@ -45,48 +49,22 @@
 
 		<div id="container">
 
-			<div id="header"> 
-			
-			<div id="footer-inline-list">
-				<ul>
-					<li><c:if test="${pageContext.request.userPrincipal.name != null}">
-					<h2>Welcome : ${pageContext.request.userPrincipal.name}</h2>
-				</c:if>
-				</li>
-					<li><c:url value="/logout" var="logoutUrl" />
+			<div id="header">
+				<div id="header-user-panel">
+					<c:url value="/logout" var="logoutUrl" />
 
 					<form action="${logoutUrl}" method="post" id="logoutForm">
 						<input type="hidden" name="${_csrf.parameterName}"
 							value="${_csrf.token}" />
 					</form>
 
-					<script>
-						function formSubmit() {
-							document.getElementById("logoutForm").submit();
-						}
-					</script>
-					<a href="javascript:formSubmit()"> Logout</a></li>
-				</ul>
-			</div>
-				<%-- <c:if test="${pageContext.request.userPrincipal.name != null}">
-					<h2>Welcome : ${pageContext.request.userPrincipal.name}</h2>
-				</c:if>
-	 --%>
-				
-					<%-- <c:url value="/logout" var="logoutUrl" />
-
-					<form action="${logoutUrl}" method="post" id="logoutForm">
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-					</form>
-
-					<script>
-						function formSubmit() {
-							document.getElementById("logoutForm").submit();
-						}
-					</script>
-					<a href="javascript:formSubmit()"> Logout</a> --%>
-				
+					<c:if test="${pageContext.request.userPrincipal.name != null}">
+						<h2>
+							User: ${pageContext.request.userPrincipal.name} &nbsp &nbsp <a
+								href="javascript:formSubmit()" id="header-link"> Logout</a>
+						</h2>
+					</c:if>
+				</div>
 			</div>
 
 			<div id="line"></div>
