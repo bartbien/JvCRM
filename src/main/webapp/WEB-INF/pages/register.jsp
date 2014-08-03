@@ -4,137 +4,88 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>SignUp</title>
+<title>Sign up</title>
 
-<script type="text/javascript">
-	function checkForm(form) {
-		if (form.username.value == "") {
-			alert("Error: Username cannot be blank!");
-			form.username.focus();
-			return false;
-		}
-		var re = /^\w+$/;
-		if (!re.test(form.username.value)) {
-			alert("Error: Username must contain only letters, numbers and underscores!");
-			form.username.focus();
-			return false;
-		}
-		if (form.password.value != "" && form.password.value == form.passwordRepeat.value) {
-			if (form.password.value.length < 6) {
-				alert("Error: Password must contain at least six characters!");
-				form.password.focus();
-				return false;
-			}
-			if (form.password.value == form.username.value) {
-				alert("Error: Password must be different from Username!");
-				form.password.focus();
-				return false;
-			}
-			re = /[0-9]/;
-			if (!re.test(form.password.value)) {
-				alert("Error: password must contain at least one number (0-9)!");
-				form.password.focus();
-				return false;
-			}
-			re = /[a-z]/;
-			if (!re.test(form.password.value)) {
-				alert("Error: password must contain at least one lowercase letter (a-z)!");
-				form.password.focus();
-				return false;
-			}
-			re = /[A-Z]/;
-			if (!re.test(form.password.value)) {
-				alert("Error: password must contain at least one uppercase letter (A-Z)!");
-				form.password.focus();
-				return false;
-			}
-		} else {
-			alert("Error: Please check that you've entered and confirmed your password!");
-			form.password.focus();
-			return false;
-		}
-		
-		return true;
-	}
-</script>
+<!-- container css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/res/container/css/core.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/res/container/css/account.css" />
+<!-- container css -->
 
-<style>
-.error {
-	padding: 15px;
-	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px;
-	color: #a94442;
-	background-color: #f2dede;
-	border-color: #ebccd1;
-}
-
-.msg {
-	padding: 15px;
-	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px;
-	color: #31708f;
-	background-color: #d9edf7;
-	border-color: #bce8f1;
-}
-
-#login-box {
-	width: 300px;
-	padding: 20px;
-	margin: 100px auto;
-	background: #fff;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	border: 1px solid #000;
-}
-</style>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/res/container/js/register.js"></script>
 
 </head>
-<body>
-	<h1>Sign Up page</h1>
 
-	<div id="login-box">
+<body onload='document.signUpForm.username.focus();'>
 
-		<h3>Create your personal account</h3>
+	<div id="main">
+		<div id="container">
 
-		<c:if test="${not empty error}">
-			<div class="error">${error}</div>
-		</c:if>
+			<div id="header">
+				<h3>Spring + Hibernate + Annotation = mini CRM system</h3>
+			</div>
 
-		<!-- <form name='signupForm' action="<c:url value='/j_spring_security_check' />" method='POST'> -->
+			<div id="line"></div>
 
-		<form name='signupForm'
-			action="${pageContext.request.contextPath}/adduser" 
-			method='POST' onsubmit="return checkForm(this);" >
+			<div id="body">
+				<fieldset id="form-container">
+					<legend id="legend">
+						<b>Sign up form:</b>
+					</legend>
 
-			<table>
-				<tr>
-					<td>User name:</td>
-					<td><input type='text' name='username' required="true"></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type='password' name='password' required="true" /></td>
-				</tr>
-				<tr>
-					<td>Confirm password:</td>
-					<td><input type='password' name='passwordRepeat'
-						required="true" /></td>
-				</tr>
-				<tr>
-					<td colspan='2'><input name="submit" type="submit"
-						value="Sign up" /></td>
-				</tr>
-			</table>
+					<div>
+						<!-- wrong login data -->
+						<c:if test="${not empty error}">
+							<div class="error">${error}</div>
+						</c:if>
 
-			<input type="hidden" name="${_csrf.parameterName}"
-				value="${_csrf.token}" />
+						<!-- <form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'> -->
 
-		</form>
+						<form class="account-form" name="signUpForm" action="${pageContext.request.contextPath}/adduser" method='POST' onsubmit="return checkForm(this);">
+							<fieldset class="account-info">
+								<label> 
+									Username 
+									<input class="input-fields" type="text" name="username" required="true">
+								</label> 
+								<label> 
+									Password 
+									<input class="input-fields" type="password" name="password" required="true">
+								</label>
+								<label> 
+									Password again
+									<input class="input-fields" type="password" name="passwordRepeat" required="true">
+								</label>
+							</fieldset>
+							
+							<div class="account-login-btn">
+								<input class="blue-style-btn" type="submit" name="submit" value="Sign up">
+							</div>
+							
+							<!-- Cross-site request forgery (a one-click attack or session riding ) -->
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							
+							<div class="account-register-btn">
+								<input class="blue-style-btn" type="button" value="Back to login" onclick="location.replace('<%=request.getContextPath()%>/login')" />
+							</div>
+						</form>
+					</div>
 
-		<input type="button" value="Back to login"
-			onclick="location.replace('<%=request.getContextPath()%>/login')" />
+				</fieldset>
+			</div>
+		</div>
+
+
+		<div id="footer">
+			<div id="footer-inline-list">
+				<ul>
+					<li>© 2014 Bart Bien</li>
+					<li><a href="http://www.phoenixjcam.com" target="_blank">phoenixjcam.com</a></li>
+					<li><a href="https://github.com/bartbien" target="_blank">github.com/bartbien</a></li>
+				</ul>
+			</div>
+		</div>
 
 	</div>
 </body>

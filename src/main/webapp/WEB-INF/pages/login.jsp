@@ -3,85 +3,94 @@
 <html>
 <head>
 <title>Login Page</title>
-<style>
-.error {
-	padding: 15px;
-	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px;
-	color: #a94442;
-	background-color: #f2dede;
-	border-color: #ebccd1;
-}
 
-.msg {
-	padding: 15px;
-	margin-bottom: 20px;
-	border: 1px solid transparent;
-	border-radius: 4px;
-	color: #31708f;
-	background-color: #d9edf7;
-	border-color: #bce8f1;
-}
+<!-- container css -->
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/res/container/css/core.css" />
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/res/container/css/account.css" />
+<!-- container css -->
 
-#login-box {
-	width: 300px;
-	padding: 20px;
-	margin: 100px auto;
-	background: #fff;
-	-webkit-border-radius: 2px;
-	-moz-border-radius: 2px;
-	border: 1px solid #000;
-}
-</style>
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-	<h1>Spring Security Custom Login Form (XML)</h1>
+	<div id="main">
+		<div id="container">
 
-	<div id="login-box">
+			<div id="header">
+				<h3>Spring + Hibernate + Annotation = mini CRM system</h3>
+			</div>
 
-		<h3>Login with Username and Password</h3>
+			<div id="line"></div>
 
-		<c:if test="${not empty error}">
-			<div class="error">${error}</div>
-		</c:if>
-		
-		<c:if test="${not empty userCreated}">
-			<div class="msg">${userCreated}</div>
-		</c:if>
-		
-		<c:if test="${not empty msg}">
-			<div class="msg">${msg}</div>
-		</c:if>
+			<div id="body">
+				<fieldset id="form-container">
+					<legend id="legend">
+						<b>Sign in form:</b>
+					</legend>
 
-<!--  j_spring_security_check is a Servlet where the 
-actual authentication is made and you must map the action of your login form to this Servlet. -->
+					<div>
+						<!-- wrong login data -->
+						<c:if test="${not empty error}">
+							<div class="error">${error}</div>
+						</c:if>
 
-		<!-- <form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'> -->
-		
-		<form name='loginForm' action="<c:url value='/login' />" method='POST'>
-			<table>
-				<tr>
-					<td>User:</td>
-					<td><input type='text' name='username' required="true"></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type='password' name='password' required="true"/></td>
-				</tr>
-				<tr>
-					<td colspan='2'><input name="submit" type="submit" value="Sign in" /></td>
-				</tr>
-			</table>
+						<!-- user created successfully -->
+						<c:if test="${not empty userCreated}">
+							<div class="msg">${userCreated}</div>
+						</c:if>
 
-			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<!-- logged out -->
+						<c:if test="${not empty msg}">
+							<div class="msg">${msg}</div>
+						</c:if>
 
-		</form>
-		
-		<input type="button" value="Sign up" onclick="location.replace('<%= request.getContextPath() %>/register')" />
-		
+						<!--  j_spring_security_check is a Servlet where the 
+							actual authentication is made and you must map the action of your login form to this Servlet. -->
+
+						<!-- <form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'> -->
+
+						<form class="account-form" name="loginForm" action="<c:url value='/login' />" method='POST'>
+							<fieldset class="account-info">
+								<label> 
+									Username 
+									<input class="input-fields" type="text" name="username" required="true">
+								</label> 
+								<label> 
+									Password 
+									<input class="input-fields" type="password" name="password" required="true">
+								</label>
+							</fieldset>
+							
+							<div class="account-login-btn">
+								<input class="blue-style-btn" type="submit" name="submit" value="Login">
+							</div>
+							
+							<!-- Cross-site request forgery (a one-click attack or session riding ) -->
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							
+							<div class="account-register-btn">
+								<input class="blue-style-btn" type="button" value="Sign up" onclick="location.replace('<%=request.getContextPath()%>/register')" />
+							</div>
+						</form>
+					</div>
+
+				</fieldset>
+			</div>
+		</div>
+
+
+		<div id="footer">
+			<div id="footer-inline-list">
+				<ul>
+					<li>© 2014 Bart Bien</li>
+					<li><a href="http://www.phoenixjcam.com" target="_blank">phoenixjcam.com</a></li>
+					<li><a href="https://github.com/bartbien" target="_blank">github.com/bartbien</a></li>
+				</ul>
+			</div>
+		</div>
+
 	</div>
-
 </body>
 </html>
+
