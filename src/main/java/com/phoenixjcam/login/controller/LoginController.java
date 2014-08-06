@@ -1,14 +1,23 @@
 package com.phoenixjcam.login.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.phoenixjcam.dashboard.users.model.UserInfoModel;
+import com.phoenixjcam.dashboard.users.service.UserInfoService;
+import com.phoenixjcam.login.users.model.UserModel;
+import com.phoenixjcam.login.users.service.UserDetailsServiceImpl;
+
 @Controller
 public class LoginController
 {
+	@Autowired
+	UserInfoService userInfoService;
+	
 	@RequestMapping(value = {"/login", "/"}, method = RequestMethod.GET)
 	public ModelAndView login(
 			@RequestParam(value = "error", required = false) String error, 
@@ -45,28 +54,11 @@ public class LoginController
 	public ModelAndView register(
 			@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "username", required = true) String username,
-			@RequestParam(value = "password", required = true) String password,
-			@RequestParam(value = "passwordRepeat", required = true) String passwordRepeat
-			)
+			@RequestParam(value = "password", required = true) String password)
 	{
 		ModelAndView model = new ModelAndView();
 		
-		// check given username and email if already exist in db
-		// else add user to db and login to dashboard
-		
-		
-		
-		if (error != null)
-		{
-			model.addObject("error", "Username or email already exist in database.");
-		}
-		else if (username != null)
-		{
-			model.addObject("msg", "User account has been created successfully.");
-		}
-		
-		//model.addObject("title", username);
-		
+		model.addObject("msg", "For right now, contact admin to create new account - To login use Username: phoenix  Password: 123456");
 		model.setViewName("login");
 
 		return model;

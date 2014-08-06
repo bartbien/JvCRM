@@ -80,14 +80,16 @@
 										<img alt='Mail'
 											src='<%=request.getContextPath()%>/res/expander/images/mailIcon.png' />
 									</div>
-									<div style='margin-left: 4px; float: left;'>Mail</div>
+									<div style='margin-left: 4px; float: left;'>Sales</div>
 								</div>
 							</div>
 							<div>
 								<ul>
 									<li><a href='#'>Contacts</a></li>
-									<li><a href='#'>Mails</a></li>
-									<li><a href='#'>Notes</a></li>
+									<li><a href='#'>Adress's</a></li>
+									<li><a href='#'>Adress's</a></li>
+									<li><a href='#'>Products</a></li>
+									<li><a href='#'></a></li>
 								</ul>
 							</div>
 							<div>
@@ -96,15 +98,17 @@
 										<img alt='Mail'
 											src='<%=request.getContextPath()%>/res/expander/images/contactsIcon.png' />
 									</div>
-									<div style='margin-left: 4px; float: left;'>Contacts</div>
+									<div style='margin-left: 4px; float: left;'>Workplace</div>
 								</div>
 							</div>
 							<div>
 								<ul>
-									<li><a href='#'>Business Cards</a></li>
-									<li><a href='#'>Address Cards</a></li>
-									<li><a href='#'>Detailed Address Cards</a></li>
-									<li><a href='#'>Phone List</a></li>
+									<li><a href='#'>Employees Profile</a></li>
+									<li><a href='#'>Adress's</a></li>
+									<li><a href='#'>Messages</a></li>
+									<li><a href='#'>Documents</a></li>
+									<li><a href='#'>Tasks</a></li>
+									<li><a href='#'>Reports Made</a></li>
 								</ul>
 							</div>
 							<div>

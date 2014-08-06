@@ -15,3 +15,7 @@ UPDATE `users` SET `email`="phoenix@gmail.com" WHERE username='phoenix';
 ALTER TABLE `users` ADD `email` VARCHAR( 45 ) NOT NULL AFTER `password` ;
 
 ALTER TABLE `users` DROP COLUMN `test`;
+
+---------------------------------------------------------
+
+---------------------------------------------------------

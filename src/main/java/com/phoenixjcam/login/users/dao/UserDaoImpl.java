@@ -1,10 +1,15 @@
 package com.phoenixjcam.login.users.dao;
 
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Set;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.phoenixjcam.login.users.model.UserModel;
+import com.phoenixjcam.login.users.model.UserRoleModel;
 
 /**
  * Data Access Object concrete class -This class implements above interface. <br>
@@ -35,3 +40,4 @@ public class UserDaoImpl implements UserDao
 		}
 	}
 }
+
