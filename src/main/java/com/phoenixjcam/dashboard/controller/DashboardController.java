@@ -38,7 +38,7 @@ public class DashboardController
 	public ModelAndView dashboardPage()
 	{
 		ModelAndView model = new ModelAndView();
-		
+		ExpanderNavigatrion expanderNavi = new ExpanderNavigatrion();
 		
 		
 	//	UserDaoImpl userData = new UserDaoImpl();
@@ -46,6 +46,7 @@ public class DashboardController
 
 		model.addObject("title", "dashboard");
 		model.addObject("message", "admin and users page");
+		
 		model.setViewName("dashboard");
 
 		return model;

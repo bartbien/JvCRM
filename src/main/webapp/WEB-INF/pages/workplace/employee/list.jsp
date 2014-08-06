@@ -10,7 +10,7 @@
 	href="<%=request.getContextPath()%>/res/container/css/core.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/res/container/css/dashboard.css" />
-<!-- container stuff -->
+<!-- end of container stuff -->
 
 <!-- expander stuff -->
 <link rel="stylesheet"
@@ -42,26 +42,22 @@
 
 </head>
 <body>
-
 	<div id="main">
-
-
-
 		<div id="container">
-
+			<!-- --------------------------------------------------- -->
+			<!-- header with logout url								 -->
+			<!-- --------------------------------------------------- -->
 			<div id="header">
 				<div id="header-user-panel">
 					<c:url value="/logout" var="logoutUrl" />
-
 					<form action="${logoutUrl}" method="post" id="logoutForm">
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					</form>
 
 					<c:if test="${pageContext.request.userPrincipal.name != null}">
 						<h2>
-							User: ${pageContext.request.userPrincipal.name} &nbsp &nbsp <a
-								href="javascript:formSubmit()" id="header-link"> Logout</a>
+							User: ${pageContext.request.userPrincipal.name} &nbsp &nbsp 
+							<a href="javascript:formSubmit()" id="header-link"> Logout</a>
 						</h2>
 					</c:if>
 				</div>
@@ -71,9 +67,13 @@
 
 			<div id="body">
 
+				<!-- --------------------------------------------------- -->
+				<!-- jq expander 								 		 -->
+				<!-- --------------------------------------------------- -->
 				<div id="leftColumn">
 					<div style='width: 250px;' id='jqxWidget'>
 						<div id="jqxNavigationBar">
+							<!-- -------------------------      -------------------------- -->
 							<div>
 								<div style='margin-top: 2px;'>
 									<div style='float: left;'>
@@ -92,6 +92,7 @@
 									<li><a href='#'></a></li>
 								</ul>
 							</div>
+							<!-- -------------------------      -------------------------- -->
 							<div>
 								<div style='margin-top: 2px;'>
 									<div style='float: left;'>
@@ -103,7 +104,7 @@
 							</div>
 							<div>
 								<ul>
-									<li><a href='<%=request.getContextPath()%>/employee/list'>List of employees</a></li>
+									<li><a href='<%=request.getContextPath()%>/workplace/employeeList'>Employees List</a></li>
 									<li><a href='#'>Adress's</a></li>
 									<li><a href='#'>Messages</a></li>
 									<li><a href='#'>Documents</a></li>
@@ -111,6 +112,7 @@
 									<li><a href='#'>Reports Made</a></li>
 								</ul>
 							</div>
+							<!-- -------------------------      -------------------------- -->
 							<div>
 								<div style='margin-top: 2px;'>
 									<div style='float: left;'>
@@ -128,6 +130,7 @@
 									<li><a href='#'>Phone List</a></li>
 								</ul>
 							</div>
+							<!-- -------------------------      -------------------------- -->
 							<div>
 								<div style='margin-top: 2px;'>
 									<div style='float: left;'>
@@ -148,98 +151,33 @@
 					</div>
 				</div>
 
+				<!-- --------------------------------------------------- -->
+				<!-- main table to display data from db or files 		 -->
+				<!-- --------------------------------------------------- -->
 				<div id="mainColumn">
 					<table id="customers">
-						<tr>
-							<th>Company</th>
-							<th>Contact</th>
-							<th>Country</th>
-						</tr>
-						<tr>
-							<td>Alfreds Futterkiste</td>
-							<td>Maria Anders</td>
-							<td>Germany</td>
-						</tr>
-						<tr class="alt">
-							<td>Berglunds snabbköp</td>
-							<td>Christina Berglund</td>
-							<td>Sweden</td>
-						</tr>
-						<tr>
-							<td>Centro comercial Moctezuma</td>
-							<td>Francisco Chang</td>
-							<td>Mexico</td>
-						</tr>
-						<tr class="alt">
-							<td>Ernst Handel</td>
-							<td>Roland Mendel</td>
-							<td>Austria</td>
-						</tr>
-						<tr>
-							<td>Island Trading</td>
-							<td>Helen Bennett</td>
-							<td>UK</td>
-						</tr>
-						<tr class="alt">
-							<td>Königlich Essen</td>
-							<td>Philip Cramer</td>
-							<td>Germany</td>
-						</tr>
-						<tr>
-							<td>Laughing Bacchus Winecellars</td>
-							<td>Yoshi Tannamuri</td>
-							<td>Canada</td>
-						</tr>
-						<tr class="alt">
-							<td>Magazzini Alimentari Riuniti</td>
-							<td>Giovanni Rovelli</td>
-							<td>Italy</td>
-						</tr>
-						<tr>
-							<td>North/South</td>
-							<td>Simon Crowther</td>
-							<td>UK</td>
-						</tr>
-						<tr class="alt">
-							<td>Paris spécialités</td>
-							<td>Marie Bertrand</td>
-							<td>France</td>
-						</tr>
-						<tr>
-							<td>Alfreds Futterkiste</td>
-							<td>Maria Anders</td>
-							<td>Germany</td>
-						</tr>
-						<tr class="alt">
-							<td>Berglunds snabbköp</td>
-							<td>Christina Berglund</td>
-							<td>Sweden</td>
-						</tr>
-						<tr>
-							<td>Alfreds Futterkiste</td>
-							<td>Maria Anders</td>
-							<td>Germany</td>
-						</tr>
-						<tr class="alt">
-							<td>Berglunds snabbköp</td>
-							<td>Christina Berglund</td>
-							<td>Sweden</td>
-						</tr>
-						<tr>
-							<td>Alfreds Futterkiste</td>
-							<td>Maria Anders</td>
-							<td>Germany</td>
-						</tr>
-						<tr class="alt">
-							<td>Berglunds snabbköp</td>
-							<td>Christina Berglund</td>
-							<td>Sweden</td>
-						</tr>
-						<tr>
-							<td>Alfreds Futterkiste</td>
-							<td>Maria Anders</td>
-							<td>Germany</td>
-						</tr>
+					
+						<thead>
+							<tr>
+								<th width="10%">Employee ID</th>
+								<th width="30%">First Name</th>
+								<th width="30%">Last Name</th>
+								<th width="30%">Options</th>
+							</tr>
+						</thead>
+						
+						<c:forEach var="employee" items="${ employees }">
+							<tr class="alt">
+								<td>${ employee.emplId }</td>
+								<td>${ employee.firstName }</td>
+								<td>${ employee.lastName }</td>
+								<td>
+									<a href="${pageContext.request.contextPath}/team/edit/${team.id}.html">Edit</a>   <br />
+									<a href="${pageContext.request.contextPath}/team/delete/${team.id}.html">Delete</a>   <br />
+								</td>
+							</tr>
+						</c:forEach>
+						
 					</table>
 
 					<div id="submitPanel">
@@ -250,40 +188,14 @@
 						</form>
 					</div>
 
-					<!-- logout, mail, user info -->
-					<div>
-
-						<h1>TTitle : ${title}</h1>
-						<h1>Message : ${message}</h1>
-
-						<c:if test="${not empty email}">
-							<h1>Email : ${email}</h1>
-						</c:if>
-
-
-
-
-
-						<form name='email'
-							action="${pageContext.request.contextPath}/email" method="get">
-							<table>
-								<tr>
-									<td>User name:</td>
-									<td><input type='text' name='username' required="true">
-									</td>
-								</tr>
-								<tr>
-									<td colspan='2'><input name="submit" type="submit"
-										value="Get email" /></td>
-								</tr>
-							</table>
-						</form>
-					</div>
-
 				</div>
 			</div>
 		</div>
-
+		
+		
+		<!-- --------------------------------------------------- -->
+		<!-- footer												 -->
+		<!-- --------------------------------------------------- -->
 		<div id="footer">
 			<div id="footer-inline-list">
 				<ul>
