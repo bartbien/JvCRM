@@ -1,4 +1,4 @@
-package com.phoenixjcam.dashboard.controller;
+package com.phoenixjcam.dashboard.employee.controller;
 
 import java.util.List;
 
@@ -36,21 +36,27 @@ public class EmployeeController
 
 		return model;
 	}
-
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public ModelAndView edditingEmployee(@ModelAttribute EmployeeModel employee, @PathVariable Integer id)
+	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public ModelAndView editEmployee(@PathVariable Integer id)
 	{
+		ModelAndView model = new ModelAndView("workplace/employee/edit");
+		EmployeeModel employee = employeeService.getEmployee(id);
+		model.addObject("employee", employee);
+		return model;
+	}
+	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+	public ModelAndView editEmployee(@ModelAttribute EmployeeModel employee, @PathVariable Integer id)
+	{
+		ModelAndView modelAndView = new ModelAndView("workplace/employee/list");
 
-//		ModelAndView modelAndView = new ModelAndView("home");
-//
-//		employeeService.updateEmployee(employee);
-//
-//		String message = "Employee was successfully edited.";
-//		modelAndView.addObject("message", message);
-//
-//		return modelAndView;
-		
-		return null;
+		employeeService.updateEmployee(employee);
+
+		String message = "Employee was successfully updated.";
+		modelAndView.addObject("message", message);
+
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

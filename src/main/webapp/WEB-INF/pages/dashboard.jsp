@@ -42,13 +42,11 @@
 
 </head>
 <body>
-
 	<div id="main">
-
-
-
 		<div id="container">
-
+			<!-- --------------------------------------------------- -->
+			<!-- header with logout url								 -->
+			<!-- --------------------------------------------------- -->
 			<div id="header">
 				<div id="header-user-panel">
 					<c:url value="/logout" var="logoutUrl" />
@@ -70,17 +68,21 @@
 			<div id="line"></div>
 
 			<div id="body">
-
+				
+				<!-- --------------------------------------------------- -->
+				<!-- jq expander 								 		 -->
+				<!-- --------------------------------------------------- -->
 				<div id="leftColumn">
 					<div style='width: 250px;' id='jqxWidget'>
 						<div id="jqxNavigationBar">
+							<!-- -------------------------      -------------------------- -->
 							<div>
 								<div style='margin-top: 2px;'>
 									<div style='float: left;'>
 										<img alt='Mail'
 											src='<%=request.getContextPath()%>/res/expander/images/mailIcon.png' />
 									</div>
-									<div style='margin-left: 4px; float: left;'>Sales</div>
+									<div style='margin-left: 4px; float: left;'>Customers</div>
 								</div>
 							</div>
 							<div>
@@ -92,18 +94,18 @@
 									<li><a href='#'></a></li>
 								</ul>
 							</div>
+							<!-- -------------------------      -------------------------- -->
 							<div>
 								<div style='margin-top: 2px;'>
 									<div style='float: left;'>
 										<img alt='Mail'
 											src='<%=request.getContextPath()%>/res/expander/images/contactsIcon.png' />
 									</div>
-									<div style='margin-left: 4px; float: left;'>Workplace</div>
+									<div style='margin-left: 4px; float: left;'>Supply</div>
 								</div>
 							</div>
 							<div>
 								<ul>
-									<li><a href='<%=request.getContextPath()%>/employee/list'>List of employees</a></li>
 									<li><a href='#'>Adress's</a></li>
 									<li><a href='#'>Messages</a></li>
 									<li><a href='#'>Documents</a></li>
@@ -111,23 +113,26 @@
 									<li><a href='#'>Reports Made</a></li>
 								</ul>
 							</div>
+							<!-- -------------------------      -------------------------- -->
 							<div>
 								<div style='margin-top: 2px;'>
 									<div style='float: left;'>
 										<img alt='Mail'
 											src='<%=request.getContextPath()%>/res/expander/images/tasksIcon.png' />
 									</div>
-									<div style='margin-left: 4px; float: left;'>Tasks</div>
+									<div style='margin-left: 4px; float: left;'>Employee</div>
 								</div>
 							</div>
 							<div>
 								<ul>
+									<li><a href='<%=request.getContextPath()%>/employee/list'>List of employees</a></li>
 									<li><a href='#'>Simple List</a></li>
 									<li><a href='#'>Detailed List</a></li>
 									<li><a href='#'>Active Tasks</a></li>
 									<li><a href='#'>Phone List</a></li>
 								</ul>
 							</div>
+							<!-- -------------------------      -------------------------- -->
 							<div>
 								<div style='margin-top: 2px;'>
 									<div style='float: left;'>
@@ -148,6 +153,9 @@
 					</div>
 				</div>
 
+				<!-- --------------------------------------------------- -->
+				<!-- main table to display data from db or files 		 -->
+				<!-- --------------------------------------------------- -->
 				<div id="mainColumn">
 					<table id="customers">
 						<tr>
@@ -259,7 +267,13 @@
 						<c:if test="${not empty email}">
 							<h1>Email : ${email}</h1>
 						</c:if>
-
+						
+						<c:forEach var="el" items="${texts}">
+							<h1>${el.sales}</h1>
+						</c:forEach>
+						
+						
+						
 
 
 
@@ -284,6 +298,10 @@
 			</div>
 		</div>
 
+
+		<!-- --------------------------------------------------- -->
+		<!-- footer												 -->
+		<!-- --------------------------------------------------- -->
 		<div id="footer">
 			<div id="footer-inline-list">
 				<ul>

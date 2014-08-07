@@ -56,7 +56,17 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	@Override
 	public List<EmployeeModel> getEmployees()
 	{
-		return getCurrentSession().createQuery("from EmployeeModel").list();
+		int pageNumber = 1;
+		int pageSize = 10;
+		
+		List<EmployeeModel> result = getCurrentSession().createCriteria(EmployeeModel.class)
+			.setFirstResult((pageNumber - 1) * pageSize)
+			.setMaxResults(pageSize)
+			.list();
+		
+		return result;
+		
+		//return getCurrentSession().createQuery("from EmployeeModel").list();
 	}
 
 }

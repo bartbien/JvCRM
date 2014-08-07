@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Lazy;
+
 @Entity
 @Table(name = "empl_personal_info_tmp", catalog = "loginsystem_tmp")
 public class EmployeeModel
@@ -18,6 +20,7 @@ public class EmployeeModel
 	int emplId;
 
 	@Column(name = "first_name", nullable = false, length = 45)
+	@Lazy
 	String firstName;
 
 	@Column(name = "last_name", nullable = false, length = 45)

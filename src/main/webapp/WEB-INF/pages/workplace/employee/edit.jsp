@@ -123,7 +123,7 @@
 							</div>
 							<div>
 								<ul>
-									<li><a href='<%=request.getContextPath()%>/employee/list'>Employees List</a></li>
+									<li><a href='<%=request.getContextPath()%>/workplace/employeeList'>Employees List</a></li>
 									<li><a href='#'>Simple List</a></li>
 									<li><a href='#'>Detailed List</a></li>
 									<li><a href='#'>Active Tasks</a></li>
@@ -155,30 +155,26 @@
 				<!-- main table to display data from db or files 		 -->
 				<!-- --------------------------------------------------- -->
 				<div id="mainColumn">
-					<table id="customers">
+					<h1>Editing employee</h1>
 					
-						<thead>
-							<tr>
-								<th width="5%">Employee ID</th>
-								<th width="30%">First Name</th>
-								<th width="30%">Last Name</th>
-								<th width="30%">Options</th>
-							</tr>
-						</thead>
-						
-						<c:forEach var="employee" items="${ employees }">
-							<tr class="alt">
-								<td>${ employee.emplId }</td>
-								<td>${ employee.firstName }</td>
-								<td>${ employee.lastName }</td>
-								<td>
-									<a href="${pageContext.request.contextPath}/employee/edit/${employee.emplId}.html">Edit</a>   <br />
-									<a href="${pageContext.request.contextPath}/employee/delete/${employee.emplId}.html">Delete</a>   <br />
-								</td>
-							</tr>
-						</c:forEach>
-						
-					</table>
+					<form method="POST" commandName="employee" action="${pageContext.request.contextPath}/employee/edit/${employee.emplId}.html">
+						<table>
+							<tbody>
+								<tr>
+									<td>Name:</td>
+									<td><input path="name" /></td>
+								</tr>
+								<tr>
+									<td>Rating:</td>
+									<td><input path="rating" /></td>
+								</tr>
+								<tr>
+									<td><input type="submit" value="Update" /></td>
+									<td></td>
+								</tr>
+							</tbody>
+						</table>
+					</form>
 
 					<div id="submitPanel">
 						<form action="">
