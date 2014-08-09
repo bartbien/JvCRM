@@ -1,9 +1,5 @@
 package com.phoenixjcam.dashboard.controller;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -98,18 +94,16 @@ public class DashboardController
 		return model;
 	}
 
-	// for 403 access denied page
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public ModelAndView accesssDenied()
 	{
 		ModelAndView model = new ModelAndView();
 
-		// check if user is login
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-		if (!(auth instanceof AnonymousAuthenticationToken))
+		if (!(authentication instanceof AnonymousAuthenticationToken))
 		{
-			UserDetails userDetail = (UserDetails) auth.getPrincipal();
+			UserDetails userDetail = (UserDetails) authentication.getPrincipal();
 			System.out.println(userDetail);
 
 			model.addObject("username", userDetail.getUsername());

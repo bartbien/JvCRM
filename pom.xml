@@ -3,7 +3,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com</groupId>
-	<artifactId>spring-security-hibernate-annotation</artifactId>
+	<artifactId>JvCRM</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -134,7 +134,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>SpringSecurity</finalName>
+		<finalName>JvCRM</finalName>
 		<plugins>
 
 			<plugin>
