@@ -3,6 +3,7 @@ package com.phoenixjcam.dashboard.employee.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,16 +28,35 @@ public class EmployeeController
 	}
 
 	@RequestMapping(value = "/list")
-	public ModelAndView listEmployee()
+	public ModelAndView listEmployee(Integer pageNumber, Integer pageSize)
 	{
-		ModelAndView model = new ModelAndView("workplace/employee/list");
+		ModelAndView model = new ModelAndView("template");
 
-		List<EmployeeModel> employees = employeeService.getEmployees();
+		if (pageNumber == null || pageNumber < 1)
+			pageNumber = 1;
+
+		if (pageSize == null || pageSize < 10)
+			pageSize = 10;
+		
+		else
+		{
+			if(pageSize > 50)
+				pageSize = 50;
+		}
+
+		int pagesCount = 10; // z bazy
+		List<EmployeeModel> employees = employeeService.getEmployees(pageNumber, pageSize);
+
+		model.addObject("workspace", "dashboard");
+		model.addObject("maintenance", "workplace/employee/list");
+		model.addObject("pageNumber", pageNumber);
+		model.addObject("pagesCount", pagesCount);
+		model.addObject("pageSize", pageSize);
 		model.addObject("employees", employees);
 
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public ModelAndView editEmployee(@PathVariable Integer id)
 	{
@@ -45,7 +65,7 @@ public class EmployeeController
 		model.addObject("employee", employee);
 		return model;
 	}
-	
+
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
 	public ModelAndView editEmployee(@ModelAttribute EmployeeModel employee, @PathVariable Integer id)
 	{
@@ -62,12 +82,12 @@ public class EmployeeController
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public ModelAndView deleteEmployee(@PathVariable Integer id)
 	{
-//		ModelAndView modelAndView = new ModelAndView("home");
-//		employeeService.deleteEmployee(id);
-//		String message = "Employee was successfully deleted.";
-//		modelAndView.addObject("message", message);
-//		return modelAndView;
-		
+		// ModelAndView modelAndView = new ModelAndView("home");
+		// employeeService.deleteEmployee(id);
+		// String message = "Employee was successfully deleted.";
+		// modelAndView.addObject("message", message);
+		// return modelAndView;
+
 		return null;
 	}
 }

@@ -17,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+
 /**
  * <strong> specify session factory, hibernate properties, data source, hibernate transaction, view resolver </strong>
  * <br>
@@ -33,7 +34,6 @@ import org.springframework.web.servlet.view.JstlView;
 @Import({ WebSecurityConfigurer.class })
 public class WebConfigurer extends WebMvcConfigurerAdapter
 {
-
 	@Bean
 	public SessionFactory sessionFactory()
 	{

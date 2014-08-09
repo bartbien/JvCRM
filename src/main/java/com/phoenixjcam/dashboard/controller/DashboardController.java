@@ -1,5 +1,9 @@
 package com.phoenixjcam.dashboard.controller;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,7 +23,7 @@ public class DashboardController
 {
 	@Autowired
 	UserInfoService userInfoService;
-	
+
 	// only for admin role
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public ModelAndView adminPage()
@@ -35,45 +39,58 @@ public class DashboardController
 
 	// for all logged in users
 	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-	public ModelAndView dashboardPage()
+	public ModelAndView dashboardPage(Integer pageNumber, Integer pageSize)
 	{
 		ModelAndView model = new ModelAndView();
+
+		if (pageNumber == null || pageNumber < 1)
+			pageNumber = 1;
+
+		if (pageSize == null || pageSize < 10)
+			pageSize = 10;
 		
-		//UserDaoImpl userData = new UserDaoImpl();
-		// userData.getUserEmail(username)
+		else
+		{
+			if(pageSize > 50)
+				pageSize = 50;
+		}
+
+		int pagesCount = 10; // z bazy
 		
+		model.setViewName("template");
+
+		model.addObject("workspace", "dashboard");
+		model.addObject("maintenance", "customers/contacts");
 		model.addObject("title", "dashboard");
 		model.addObject("message", "admin and users page");
+		model.addObject("partial", "dashboard");
+		model.addObject("pageNumber", pageNumber);
+		model.addObject("pagesCount", pagesCount);
+		model.addObject("pageSize", pageSize);
 		
-		 
-		
-		ExpanderNavigation[] texts = new ExpanderNavigation[]
-		{
-				new ExpanderNavigation(),
-				new ExpanderNavigation(),
-				new ExpanderNavigation()
-		};
+//		model.addObject("pageTitle", "customers/contacts.jsp");
 
-		model.addObject("texts", texts);
-		
-		ExpanderNavigation expanderNavi = new ExpanderNavigation();
-		model.addObject("expanderNavi", expanderNavi);
-		
-		model.setViewName("dashboard");
+//		ExpanderNavigation[] texts = new ExpanderNavigation[]
+//		{ new ExpanderNavigation(), new ExpanderNavigation(), new ExpanderNavigation() };
+//
+//		model.addObject("texts", texts);
+//
+//		ExpanderNavigation expanderNavi = new ExpanderNavigation();
+//		model.addObject("expanderNavi", expanderNavi);
 
+		
 		return model;
 	}
-	
+
 	// for all logged users
 	@RequestMapping(value = "/email", method = RequestMethod.GET)
-	public ModelAndView getEmail(
-			@RequestParam(value = "username", required = false) String username)
+	public ModelAndView getEmail(@RequestParam(value = "username", required = false) String username)
 	{
 		ModelAndView model = new ModelAndView();
-		UserInfoModel userInfoModel = (UserInfoModel)userInfoService.getUserInfo(username);
-		
+		UserInfoModel userInfoModel = (UserInfoModel) userInfoService.getUserInfo(username);
+
 		String email = userInfoModel.getEmail();
-		
+
 		model.addObject("title", "dashboard");
 		model.addObject("email", email);
 		model.setViewName("dashboard");

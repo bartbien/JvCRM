@@ -13,7 +13,6 @@ import com.phoenixjcam.dashboard.employee.model.EmployeeModel;
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService
 {
-
 	@Autowired
 	private EmployeeDAO employeeDAO;
 	
@@ -42,9 +41,9 @@ public class EmployeeServiceImpl implements EmployeeService
 	}
 
 	@Override
-	public List<EmployeeModel> getEmployees()
+	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize)
 	{
-		return employeeDAO.getEmployees();
+		return employeeDAO.getEmployees(pageNumber, pageSize);
 	}
 
 }

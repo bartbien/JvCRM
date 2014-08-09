@@ -68,7 +68,7 @@
 	color: #395870;
 	display: block;
 	font-weight: bold;
-	margin-bottom: 20px;
+	
 }
 
 .account-info input {
@@ -78,6 +78,7 @@
 	color: #636466;
 	padding: 6px;
 	margin-top: 6px;
+	margin-bottom: 20px;
 	width: 100%;
 }
 

@@ -54,11 +54,8 @@ public class EmployeeDAOImpl implements EmployeeDAO
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<EmployeeModel> getEmployees()
+	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize)
 	{
-		int pageNumber = 1;
-		int pageSize = 10;
-		
 		List<EmployeeModel> result = getCurrentSession().createCriteria(EmployeeModel.class)
 			.setFirstResult((pageNumber - 1) * pageSize)
 			.setMaxResults(pageSize)

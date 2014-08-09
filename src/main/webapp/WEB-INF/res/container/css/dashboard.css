@@ -47,6 +47,7 @@
 #customers {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	width: 650px;
+	border: 1px solid #A7E442;
 	border-collapse: collapse;
 }
 

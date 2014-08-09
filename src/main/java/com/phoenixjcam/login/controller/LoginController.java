@@ -1,5 +1,8 @@
 package com.phoenixjcam.login.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +28,9 @@ public class LoginController
 	{
 		ModelAndView model = new ModelAndView();
 		
+		model.setViewName("template");
+		model.addObject("workspace", "login");
+		
 		if (error != null)
 		{
 			model.addObject("error", "Invalid username or password!");
@@ -35,8 +41,6 @@ public class LoginController
 			model.addObject("msg", "Logged out successfully.");
 		}
 		
-		model.setViewName("login");
-
 		return model;
 	}
 	
@@ -45,7 +49,8 @@ public class LoginController
 	{
 		ModelAndView model = new ModelAndView();
 		
-		model.setViewName("register");
+		model.setViewName("template");
+		model.addObject("workspace", "register");
 
 		return model;
 	}
