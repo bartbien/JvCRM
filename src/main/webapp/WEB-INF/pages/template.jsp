@@ -7,45 +7,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-<title>NavigationBar</title>
+<title>JvCRM</title>
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/res/container/css/core.css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/res/container/css/dashboard.css" />
-
-<!-- expander stuff -->
-<link rel="stylesheet" href="<%=request.getContextPath()%>/res/expander/css/jqx.base.css" />
-<script type="text/javascript" src="<%=request.getContextPath()%>/res/expander/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/res/expander/js/demos.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/res/expander/js/jqxcore.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/res/expander/js/jqxnavigationbar.js"></script>
-<!-- end of expander stuff -->
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		// Create jqxNavigationBar.
-		$("#jqxNavigationBar").jqxNavigationBar({
-			width : 250,
-			expandMode : 'multiple',
-			expandedIndexes : [ 0, 1, 2, 3 ]
-		});
-	});
-
-	function formSubmit() {
-		document.getElementById("logoutForm").submit();
-	}
-</script>
-
-<title>${title}</title>
 </head>
 <body>
 	<div id="main">
-		<div id="container">
+		<!-- --------------------------------------------------- -->
+		<!-- workspace depends - login or dashboard		 		 -->
+		<!-- container = header, main area to display content	 -->
+		<!-- controllers're deciding which workspace to display	 -->
+		<!-- --------------------------------------------------- -->
+		<div id="workspace">
 			<jsp:include page="${workspace}.jsp" />
 		</div>
-		<!-- --------------------------------------------------- -->
-		<!-- footer												 -->
-		<!-- --------------------------------------------------- -->
+		
+		<!-- footer	-->
 		<div id="footer">
 			<div id="footer-inline-list">
 				<ul>

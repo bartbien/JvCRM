@@ -1,4 +1,5 @@
-SpringSecurityHibernateAnnotation
+JvCRM
+
 =================================
 
-Annotation based, mysql, hib, mvc, 
+Spring annotation based, mvc, security, hibernate (mysql) ~ so on

@@ -48,7 +48,11 @@ public class EmployeeController
 		List<EmployeeModel> employees = employeeService.getEmployees(pageNumber, pageSize);
 
 		model.addObject("workspace", "dashboard");
-		model.addObject("maintenance", "workplace/employee/list");
+		
+		//model.addObject("leftColumn", "expander");
+		
+		model.addObject("mainColumn", "workplace/employee/list");
+		
 		model.addObject("pageNumber", pageNumber);
 		model.addObject("pagesCount", pagesCount);
 		model.addObject("pageSize", pageSize);
@@ -77,6 +81,23 @@ public class EmployeeController
 		modelAndView.addObject("message", message);
 
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/jqTable", method = RequestMethod.GET)
+	public ModelAndView jqTable()
+	{
+		
+		ModelAndView model = new ModelAndView("template");
+
+		model.addObject("workspace", "dashboard");
+		//model.addObject("leftColumn", "expander");
+		model.addObject("mainColumn", "table");
+	
+
+		String message = "successfully";
+		model.addObject("message", message);
+
+		return model;
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

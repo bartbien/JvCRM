@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/res/container/css/core.css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/res/container/css/account.css" />
 
 <jsp:include page="headers/login.jsp" />

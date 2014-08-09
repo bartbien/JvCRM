@@ -1,6 +1,5 @@
 package com.phoenixjcam.dashboard.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,14 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.phoenixjcam.dashboard.users.model.UserInfoModel;
-import com.phoenixjcam.dashboard.users.service.UserInfoService;
-
 @Controller
 public class DashboardController
 {
-	@Autowired
-	UserInfoService userInfoService;
 
 	// only for admin role
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
@@ -56,8 +50,11 @@ public class DashboardController
 		model.setViewName("template");
 
 		model.addObject("workspace", "dashboard");
-		model.addObject("maintenance", "customers/contacts");
-		model.addObject("title", "dashboard");
+		//model.addObject("leftColumn", "expander");
+		
+		model.addObject("mainColumn", "customers/contacts");
+		
+		//model.addObject("title", "dashboard");
 		model.addObject("message", "admin and users page");
 		model.addObject("partial", "dashboard");
 		model.addObject("pageNumber", pageNumber);
@@ -83,12 +80,12 @@ public class DashboardController
 	public ModelAndView getEmail(@RequestParam(value = "username", required = false) String username)
 	{
 		ModelAndView model = new ModelAndView();
-		UserInfoModel userInfoModel = (UserInfoModel) userInfoService.getUserInfo(username);
+		//UserInfoModel userInfoModel = (UserInfoModel) userInfoService.getUserInfo(username);
 
-		String email = userInfoModel.getEmail();
+		//String email = userInfoModel.getEmail();
 
 		model.addObject("title", "dashboard");
-		model.addObject("email", email);
+		//model.addObject("email", email);
 		model.setViewName("dashboard");
 
 		return model;
