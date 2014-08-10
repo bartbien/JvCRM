@@ -51,6 +51,20 @@ public class EmployeeDAOImpl implements EmployeeDAO
 		if(employee != null)
 			getCurrentSession().delete(employee);
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<EmployeeModel> getEmployees()
+	{
+		int pageNumber = 1;
+		int pageSize = 10;
+		List<EmployeeModel> result = getCurrentSession().createCriteria(EmployeeModel.class)
+		.setFirstResult((pageNumber - 1) * pageSize)
+		.setMaxResults(pageSize)
+		.list();
+		return result;
+		//return getCurrentSession().createQuery("from EmployeeModel").list();
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

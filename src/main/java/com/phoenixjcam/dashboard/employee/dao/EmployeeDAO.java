@@ -13,6 +13,8 @@ public interface EmployeeDAO
 	public EmployeeModel getEmployee(int id);
 
 	public void deleteEmployee(int id);
+	
+	public List<EmployeeModel> getEmployees();
 
 	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize);
 }

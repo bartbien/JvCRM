@@ -89,14 +89,23 @@ public class EmployeeController
 		
 		ModelAndView model = new ModelAndView("template");
 
+//		model.addObject("workspace", "dashboard");
+//		//model.addObject("leftColumn", "expander");
+//		model.addObject("mainColumn", "table");
+//	
+//
+//		String message = "successfully";
+//		model.addObject("message", message);
+
+		List<EmployeeModel> employees = employeeService.getEmployees(1, 200);
+
 		model.addObject("workspace", "dashboard");
-		//model.addObject("leftColumn", "expander");
-		model.addObject("mainColumn", "table");
 	
+		model.addObject("mainColumn", "table");
+		
 
-		String message = "successfully";
-		model.addObject("message", message);
-
+		model.addObject("employees", employees);
+		
 		return model;
 	}
 

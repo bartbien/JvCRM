@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <link rel="stylesheet"  href="<%=request.getContextPath()%>/res/table/css/jquery.dataTables.css">
 <link rel="stylesheet"  href="<%=request.getContextPath()%>/res/table/css/shCore.css">
@@ -28,6 +28,8 @@
 						<th>Age</th>
 						<th>Start date</th>
 						<th>Salary</th>
+						<th>edit</th>
+						<th>delete</th>
 					</tr>
 				</thead>
 
@@ -39,11 +41,27 @@
 						<th>Age</th>
 						<th>Start date</th>
 						<th>Salary</th>
+						<th>edit</th>
+						<th>delete</th>
 					</tr>
 				</tfoot>
 
 				<tbody>
-					<tr>
+					<c:forEach var="employee" items="${ employees }">
+						<tr class="alt">
+							<td>${ employee.emplId }</td>
+							<td>${ employee.firstName }</td>
+							<td>${ employee.lastName }</td>
+							<td>${ employee.lastName }</td>
+							<td>${ employee.lastName }</td>
+							<td>${ employee.lastName }</td>
+							<td><a href="${pageContext.request.contextPath}/employee/edit/${employee.emplId}.html">Edit</a>  </td>
+							<td><a href="${pageContext.request.contextPath}/employee/delete/${employee.emplId}.html">Delete</a> </td>
+						</tr>
+					</c:forEach>
+				
+				
+					<!-- <tr>
 						<td>Tiger Nixon</td>
 						<td>System Architect</td>
 						<td>Edinburgh</td>
@@ -498,7 +516,7 @@
 						<td>27</td>
 						<td>2011/01/25</td>
 						<td>$112,000</td>
-					</tr>
+					</tr> -->
 				</tbody>
 			</table>
 

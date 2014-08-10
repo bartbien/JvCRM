@@ -39,7 +39,7 @@
 			</div>
 			<div>
 				<ul>
-					<li><a href='#'>Contacts</a></li>
+					<li><a href="<%=request.getContextPath()%>/dashboard" id="header-link">Home</a></li>
 					<li><a href='#'>Adress's</a></li>
 					<li><a href='#'>Adress's</a></li>
 					<li><a href='#'>Products</a></li>
