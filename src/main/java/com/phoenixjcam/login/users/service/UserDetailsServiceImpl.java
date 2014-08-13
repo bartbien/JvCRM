@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.phoenixjcam.login.users.dao.UserDao;
-import com.phoenixjcam.login.users.model.UserModel;
 import com.phoenixjcam.login.users.model.UserRoleModel;
 
 @Service("userDetailsService")

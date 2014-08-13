@@ -14,8 +14,9 @@
 <body>
 	<div id="main">
 		<!-- --------------------------------------------------- -->
-		<!-- workspace depends - login or dashboard		 		 -->
-		<!-- container = header, main area to display content	 -->
+		<!-- workspace = login\register\dashboard		 		 -->
+		<!-- each workspace has header and main area 			 -->
+		<!-- to display content									 -->
 		<!-- controllers're deciding which workspace to display	 -->
 		<!-- --------------------------------------------------- -->
 		<div id="workspace">

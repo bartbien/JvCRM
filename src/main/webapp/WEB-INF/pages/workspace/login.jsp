@@ -2,13 +2,15 @@
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/res/container/css/account.css" />
 
-<jsp:include page="headers/login.jsp" />
+<jsp:include page="../headers/login.jsp" />
 <div id="line"></div>
 <div id="body">
 	<fieldset id="form-container">
+	
 		<legend id="legend">
 			<b>Sign in form:</b>
 		</legend>
+		
 		<div>
 			<!-- wrong login data -->
 			<c:if test="${not empty error}">

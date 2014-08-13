@@ -9,8 +9,7 @@
 		</c:when>
 		<c:otherwise>
 			<h2>
-				Username : ${username} <br />You do not have permission to access
-				this page!
+				Username : ${username} <br />You do not have permission to access this page!
 			</h2>
 		</c:otherwise>
 	</c:choose>

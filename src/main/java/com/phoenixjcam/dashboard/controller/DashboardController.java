@@ -7,90 +7,72 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class DashboardController
 {
-
-	// only for admin role
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public ModelAndView adminPage()
-	{
-		ModelAndView model = new ModelAndView();
-
-		model.addObject("title", "Spring Security");
-		model.addObject("message", "only admin has rights to show this page");
-		model.setViewName("admin");
-
-		return model;
-	}
-
-	// for all logged in users
-	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
+	/**
+	 * WebSecurityConfigurer is taking care of what to do with login form from login.jsp .loginPage("/login") <br>
+	 * .failureUrl("/login?error") <br>
+	 * .usernameParameter("username") <br>
+	 * .passwordParameter("password") <br>
+	 * .defaultSuccessUrl("/dashboard") and so on <br>
+	 *
+	 * expander is always at the left side of dash board page
+	 * 
+	 * @param pageNumber
+	 * @param pageSize
+	 * @return
+	 */
+	@RequestMapping(value = { "/dashboard", "/home" }, method = RequestMethod.GET)
 	public ModelAndView dashboardPage(Integer pageNumber, Integer pageSize)
 	{
-		ModelAndView model = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView();
 
-		if (pageNumber == null || pageNumber < 1)
-			pageNumber = 1;
+		modelAndView.setViewName("template");
+		modelAndView.addObject("workspace", "workspace/dashboard");
+		modelAndView.addObject("mainColumn", "../widgets/miniCalendar");
 
-		if (pageSize == null || pageSize < 10)
-			pageSize = 10;
-		
-		else
-		{
-			if(pageSize > 50)
-				pageSize = 50;
-		}
+		// display simply jquery calendar and main tasks from db
 
-		int pagesCount = 10; // z bazy
-		
-		model.setViewName("template");
-
-		model.addObject("workspace", "dashboard");
-		//model.addObject("leftColumn", "expander");
-		
-		model.addObject("mainColumn", "customers/contacts");
-		
-		//model.addObject("title", "dashboard");
-		model.addObject("message", "admin and users page");
-		model.addObject("partial", "dashboard");
-		model.addObject("pageNumber", pageNumber);
-		model.addObject("pagesCount", pagesCount);
-		model.addObject("pageSize", pageSize);
-		
-//		model.addObject("pageTitle", "customers/contacts.jsp");
-
-//		ExpanderNavigation[] texts = new ExpanderNavigation[]
-//		{ new ExpanderNavigation(), new ExpanderNavigation(), new ExpanderNavigation() };
-//
-//		model.addObject("texts", texts);
-//
-//		ExpanderNavigation expanderNavi = new ExpanderNavigation();
-//		model.addObject("expanderNavi", expanderNavi);
-
-		
-		return model;
+		return modelAndView;
 	}
 
-	// for all logged users
-	@RequestMapping(value = "/email", method = RequestMethod.GET)
-	public ModelAndView getEmail(@RequestParam(value = "username", required = false) String username)
-	{
-		ModelAndView model = new ModelAndView();
-		//UserInfoModel userInfoModel = (UserInfoModel) userInfoService.getUserInfo(username);
+	// // only for admin role
+	// @RequestMapping(value = "/admin", method = RequestMethod.GET)
+	// public ModelAndView adminPage()
+	// {
+	// ModelAndView model = new ModelAndView();
+	//
+	// model.addObject("title", "Spring Security");
+	// model.addObject("message", "only admin has rights to show this page");
+	// model.setViewName("admin");
+	//
+	// return model;
+	// }
 
-		//String email = userInfoModel.getEmail();
+	// // for all logged users
+	// @RequestMapping(value = "/email", method = RequestMethod.GET)
+	// public ModelAndView getEmail(@RequestParam(value = "username", required = false) String username)
+	// {
+	// ModelAndView model = new ModelAndView();
+	// //UserInfoModel userInfoModel = (UserInfoModel) userInfoService.getUserInfo(username);
+	//
+	// //String email = userInfoModel.getEmail();
+	//
+	// model.addObject("title", "dashboard");
+	// //model.addObject("email", email);
+	// model.setViewName("dashboard");
+	//
+	// return model;
+	// }
 
-		model.addObject("title", "dashboard");
-		//model.addObject("email", email);
-		model.setViewName("dashboard");
-
-		return model;
-	}
-
+	/**
+	 * WebSecurityConfigurer decide when to display 403 Forbidden HTTP status code
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/403", method = RequestMethod.GET)
 	public ModelAndView accesssDenied()
 	{
@@ -106,7 +88,7 @@ public class DashboardController
 			model.addObject("username", userDetail.getUsername());
 		}
 
-		model.setViewName("403");
+		model.setViewName("statusCode/403");
 		return model;
 	}
 }

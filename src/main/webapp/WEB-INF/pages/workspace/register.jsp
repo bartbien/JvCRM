@@ -5,11 +5,12 @@
 
 <script type="text/javascript" src="<%=request.getContextPath()%>/res/container/js/register.js"></script>
 
-<jsp:include page="headers/login.jsp" />
+<jsp:include page="../headers/login.jsp" />
 <div id="line"></div>
 
 <div id="body">
 	<fieldset id="form-container">
+	
 		<legend id="legend">
 			<b>Sign up form:</b>
 		</legend>
@@ -22,31 +23,25 @@
 
 			<!-- <form name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'> -->
 
-			<form class="account-form" name="signUpForm"
-				action="${pageContext.request.contextPath}/adduser" method='POST'
-				onsubmit="return checkForm(this);">
+			<form class="account-form" name="signUpForm" action="${pageContext.request.contextPath}/adduser" method='POST'onsubmit="return checkForm(this);">
 				<div class="account-info">
-					<label> Username <input class="input-fields" type="text"
-						name="username" required="true">
-					</label> <label> Password <input class="input-fields"
-						type="password" name="password" required="true">
-					</label> <label> Password again <input class="input-fields"
-						type="password" name="passwordRepeat" required="true">
-					</label>
+					<label> Username </label> 
+					<input class="input-fields" type="text" name="username" required="true">
+					<label> Password </label>
+					<input class="input-fields" type="password" name="password" required="true">
+					<label> Password again </label>
+					<input class="input-fields"	type="password" name="passwordRepeat" required="true">
 				</div>
 
 				<div class="account-login-btn">
-					<input class="blue-style-btn" type="submit" name="submit"
-						value="Sign up">
+					<input class="blue-style-btn" type="submit" name="submit" value="Sign up">
 				</div>
 
 				<!-- Cross-site request forgery (a one-click attack or session riding ) -->
-				<input type="hidden" name="${_csrf.parameterName}"
-					value="${_csrf.token}" />
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
-				<div class="account-register-btn">
-					<input class="blue-style-btn" type="button" value="Back to login"
-						onclick="location.replace('<%=request.getContextPath()%>/login')" />
+				<div class="account-register-back-btn">
+					<input class="blue-style-btn" type="button" value="Back to login" onclick="location.replace('<%=request.getContextPath()%>/login')" />
 				</div>
 			</form>
 		</div>

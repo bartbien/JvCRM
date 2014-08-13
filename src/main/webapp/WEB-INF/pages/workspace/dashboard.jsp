@@ -6,13 +6,13 @@
 
 
 
-<jsp:include page="headers/logout.jsp" />
+<jsp:include page="../headers/logout.jsp" />
 <div id="line"></div>
 <div id="body">
 	
 	<!-- expander -->
 	<%-- <jsp:include page="${ leftColumn }.jsp" /> --%>
-	<jsp:include page="expander.jsp" />
+	<jsp:include page="../widgets/expander.jsp" />
 	
 
 	<!-- --------------------------------------------------- -->

@@ -6,6 +6,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * WebSecurityConfigurer is taking care of what to do with login form from login.jsp
+ *  .loginPage("/login") <br>
+ *	.failureUrl("/login?error") <br>
+ *	.usernameParameter("username") <br>
+ *	.passwordParameter("password") <br>
+ *	.defaultSuccessUrl("/dashboard") and so on <br>
+ *  
+ * @author Bart88
+ *
+ */
 @Controller
 public class LoginController
 {
@@ -14,33 +25,33 @@ public class LoginController
 			@RequestParam(value = "error", required = false) String error, 
 			@RequestParam(value = "logout", required = false) String logout)
 	{
-		ModelAndView model = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView();
 		
-		model.setViewName("template");
-		model.addObject("workspace", "login");
+		modelAndView.setViewName("template");
+		modelAndView.addObject("workspace", "workspace/login");
 		
 		if (error != null)
 		{
-			model.addObject("error", "Invalid username or password!");
+			modelAndView.addObject("error", "Invalid username or password!");
 		}
 
 		if (logout != null)
 		{
-			model.addObject("msg", "Logged out successfully.");
+			modelAndView.addObject("msg", "Logged out successfully.");
 		}
 		
-		return model;
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView signUpPage()
 	{
-		ModelAndView model = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView();
 		
-		model.setViewName("template");
-		model.addObject("workspace", "register");
+		modelAndView.setViewName("template");
+		modelAndView.addObject("workspace", "workspace/register");
 
-		return model;
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/adduser", method = RequestMethod.POST)
@@ -49,11 +60,11 @@ public class LoginController
 			@RequestParam(value = "username", required = true) String username,
 			@RequestParam(value = "password", required = true) String password)
 	{
-		ModelAndView model = new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView();
 		
-		model.addObject("msg", "For right now, contact admin to create new account - To login use Username: phoenix  Password: 123456");
-		model.setViewName("login");
+		modelAndView.addObject("msg", "For right now, contact admin to create new account - To login use Username: phoenix  Password: 123456");
+		modelAndView.setViewName("login");
 
-		return model;
+		return modelAndView;
 	}
 }
