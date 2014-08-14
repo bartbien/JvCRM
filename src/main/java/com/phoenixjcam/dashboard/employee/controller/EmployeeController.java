@@ -1,5 +1,6 @@
 package com.phoenixjcam.dashboard.employee.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,12 +10,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.phoenixjcam.dashboard.employee.model.EmployeeModel;
 import com.phoenixjcam.dashboard.employee.service.EmployeeService;
+import com.phoenixjcam.login.users.model.UserModel;
+import com.phoenixjcam.table.models.Employee;
+import com.phoenixjcam.table.models.TableData;
 
 @Controller
+// @RestController
 @RequestMapping(value = "employee")
 public class EmployeeController
 {
@@ -37,10 +44,10 @@ public class EmployeeController
 
 		if (pageSize == null || pageSize < 10)
 			pageSize = 10;
-		
+
 		else
 		{
-			if(pageSize > 50)
+			if (pageSize > 50)
 				pageSize = 50;
 		}
 
@@ -48,11 +55,11 @@ public class EmployeeController
 		List<EmployeeModel> employees = employeeService.getEmployees(pageNumber, pageSize);
 
 		model.addObject("workspace", "dashboard");
-		
-		//model.addObject("leftColumn", "expander");
-		
+
+		// model.addObject("leftColumn", "expander");
+
 		model.addObject("mainColumn", "workplace/employee/list");
-		
+
 		model.addObject("pageNumber", pageNumber);
 		model.addObject("pagesCount", pagesCount);
 		model.addObject("pageSize", pageSize);
@@ -82,31 +89,91 @@ public class EmployeeController
 
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/jqTable", method = RequestMethod.GET)
 	public ModelAndView jqTable()
 	{
-		
+
 		ModelAndView model = new ModelAndView("template");
 
-//		model.addObject("workspace", "dashboard");
-//		//model.addObject("leftColumn", "expander");
-//		model.addObject("mainColumn", "table");
-//	
-//
-//		String message = "successfully";
-//		model.addObject("message", message);
+		// model.addObject("workspace", "dashboard");
+		// //model.addObject("leftColumn", "expander");
+		// model.addObject("mainColumn", "table");
+		//
+		//
+		// String message = "successfully";
+		// model.addObject("message", message);
 
 		List<EmployeeModel> employees = employeeService.getEmployees(1, 200);
 
-		model.addObject("workspace", "dashboard");
-	
-		model.addObject("mainColumn", "table");
-		
+		model.addObject("workspace", "workspace/dashboard");
+
+		model.addObject("mainColumn", "../widgets/table");
 
 		model.addObject("employees", employees);
-		
+
 		return model;
+	}
+
+	// @RequestMapping(value = "/getEmployers", method = RequestMethod.GET)
+	// public @ResponseBody String getEmployers()
+	// {
+	// //return employeeService.getEmployees(1, 200);
+	//
+	// return "{"
+	// + "\"data\": ["
+	// + "  ["
+	// + "    \"Name\","
+	// + "    \"Position\","
+	// + "    \"Office\","
+	// + "    \"Age\","
+	// + "    \"Start date\","
+	// + "    \"Salary\","
+	// + "    \"edit\","
+	// + "    \"<a href=\\\"\\\">delete</a>\""
+	// + "  ]"
+	// + "]}";
+	// }
+
+	// json response
+	@RequestMapping(value = "/getEmployers", method = RequestMethod.GET)
+	public @ResponseBody TableData<Employee> getEmployers(Integer pageNumber, Integer pageSize)
+	{
+		if (pageNumber == null || pageNumber < 1)
+			pageNumber = 1;
+
+		if (pageSize == null || pageSize < 10)
+			pageSize = 10;
+
+		else
+		{
+			if (pageSize > 50)
+				pageSize = 50;
+		}
+
+		List<EmployeeModel> employees = employeeService.getEmployees(pageNumber, pageSize);
+		List<Employee> data = new ArrayList<Employee>();
+
+		for (EmployeeModel el : employees)
+		{
+			Employee row = new Employee();
+
+			row.setName(el.getLastName() + " " + el.getFirstName());
+			row.setPosition("Position");
+			row.setOffice("Office");
+			row.setAge("Age");
+			row.setStart_date("Start date");
+			row.setSalary("Salary");
+			row.setEdit("edit");
+			row.setDelete("delete");
+
+			data.add(row);
+		}
+		
+		TableData<Employee> result = new TableData<Employee>();
+		result.setData(data);
+
+		return result;
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

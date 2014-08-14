@@ -2,6 +2,8 @@ package com.phoenixjcam.dashboard.employee.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,7 +14,7 @@ import org.springframework.context.annotation.Lazy;
 
 @Entity
 @Table(name = "empl_personal_info_tmp", catalog = "loginsystem_tmp")
-public class EmployeeModel
+public class EmployeeModel implements Serializable
 {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
