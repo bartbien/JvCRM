@@ -3,8 +3,8 @@ table employee
 id
 last_name
 first_name
-position
-office
+position_id
+office_id
 start_date
 salary
 + edit 

@@ -18,7 +18,9 @@ public interface EmployeeDAO
 	
 	public List<EmployeeModel> getEmployees(int offset, int pageSize);
 
-	public List<EmployeeModel> getEmployees(int offset, int pageSize, String query);
+	public List<EmployeeModel> getEmployees(int offset, int pageSize, String query, Integer orderColumn, String orderDirection);
 	
 	public long getEmployeesCount();
+	
+	public long getEmployeesCount(String query);
 }

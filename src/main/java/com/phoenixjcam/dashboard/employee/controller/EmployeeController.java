@@ -2,13 +2,16 @@ package com.phoenixjcam.dashboard.employee.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
 
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -139,9 +142,12 @@ public class EmployeeController
 	// + "]}";
 	// }
 
+	
 	// json response
 	@RequestMapping(value = "/getEmployers", method = RequestMethod.GET)
 	public @ResponseBody DataCover<Employee> getEmployers(
+		@RequestParam (value = "order[0][column]") Integer orderColumn,
+		@RequestParam (value = "order[0][dir]") String orderDirection,
 		@RequestParam (value = "start") Integer start, 
 		@RequestParam (value = "length") Integer length, 
 		@RequestParam (value = "draw") Integer draw,
@@ -159,32 +165,35 @@ public class EmployeeController
 				length = 100;
 		}*/
 
-		long employeesCount = employeeService.getEmployeesCount();
-		List<EmployeeModel> employees = employeeService.getEmployees(start, length, query);
+		long totalEmployeesCount = employeeService.getEmployeesCount();
+		long filteredEmployeesCount = employeeService.getEmployeesCount(query);
+		List<EmployeeModel> employees = employeeService.getEmployees( start, length, query, orderColumn, orderDirection );
 		
 		List<Employee> data = new ArrayList<Employee>();
-
-		for (EmployeeModel el : employees)
+		
+		for ( EmployeeModel el : employees )
 		{
 			Employee row = new Employee();
-
-			row.setName(el.getEmplId() + " " +  el.getLastName() + " " + el.getFirstName());
-			row.setPosition("Position");
-			row.setOffice("Office");
-			row.setAge("Age");
-			row.setStart_date("Start date");
-			row.setSalary("Salary");
-//			row.setEdit("edit");
-//			row.setDelete("delete");
-
-			data.add(row);
+			
+			row.setId( el.getEmplId() );
+			row.setLastName( el.getLastName() );
+			row.setFirstName( el.getFirstName() );
+			row.setPosition( "Position" );
+			row.setOffice( "Office" );
+			row.setAge( "Age" );
+			row.setStartDate( "Start date" );
+			row.setSalary( "Salary" );
+			// row.setEdit("edit");
+			// row.setDelete("delete");
+			
+			data.add( row );
 		}
 
 		DataCover<Employee> cover = new DataCover<Employee>();
 
 		cover.setDraw(draw);
-		cover.setRecordsTotal(employeesCount); // TODO: zapytanie do bazy
-		cover.setRecordsFiltered(employeesCount); // TODO: zapytanie do bazy
+		cover.setRecordsTotal(totalEmployeesCount);
+		cover.setRecordsFiltered(filteredEmployeesCount);
 		cover.setData(data);
 
 		return cover;

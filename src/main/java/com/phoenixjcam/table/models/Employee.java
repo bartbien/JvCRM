@@ -2,24 +2,46 @@ package com.phoenixjcam.table.models;
 
 public class Employee
 {
-	private String name;
+	private int id;
+	private String lastName;
+	private String firstName;
 	private String position;
 	private String office;
 	private String age;
-	private String start_date;
+	private String startDate;
 	private String salary;
-	private String edit;
-	private String delete;
+//	private String edit;
+//	private String delete;
 
-	public String getName()
+	public int getId()
 	{
-		return name;
+		return id;
 	}
 
-	public void setName(String name)
+	public void setId( int id )
 	{
-		this.name = name;
+		this.id = id;
 	}
+
+	public String getLastName()
+	{
+		return lastName;
+	}
+
+	public void setLastName( String lastName )
+	{
+		this.lastName = lastName;
+	}
+
+	public String getFirstName()
+	{
+		return firstName;
+	}
+
+	public void setFirstName( String firstName )
+	{
+		this.firstName = firstName;
+	}	
 
 	public String getPosition()
 	{
@@ -51,14 +73,14 @@ public class Employee
 		this.age = age;
 	}
 
-	public String getStart_date()
+	public String getStartDate()
 	{
-		return start_date;
+		return startDate;
 	}
 
-	public void setStart_date(String start_date)
+	public void setStartDate(String startDate)
 	{
-		this.start_date = start_date;
+		this.startDate = startDate;
 	}
 
 	public String getSalary()
@@ -71,23 +93,23 @@ public class Employee
 		this.salary = salary;
 	}
 
-	public String getEdit()
-	{
-		return edit;
-	}
-
-	public void setEdit(String edit)
-	{
-		this.edit = edit;
-	}
-
-	public String getDelete()
-	{
-		return delete;
-	}
-
-	public void setDelete(String delete)
-	{
-		this.delete = delete;
-	}
+//	public String getEdit()
+//	{
+//		return edit;
+//	}
+//
+//	public void setEdit(String edit)
+//	{
+//		this.edit = edit;
+//	}
+//
+//	public String getDelete()
+//	{
+//		return delete;
+//	}
+//
+//	public void setDelete(String delete)
+//	{
+//		this.delete = delete;
+//	}
 }

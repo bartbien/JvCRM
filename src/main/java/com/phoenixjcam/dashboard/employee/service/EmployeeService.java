@@ -2,6 +2,8 @@ package com.phoenixjcam.dashboard.employee.service;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.phoenixjcam.dashboard.employee.model.EmployeeModel;
 
 public interface EmployeeService
@@ -16,7 +18,9 @@ public interface EmployeeService
 	
 	public List<EmployeeModel> getEmployees(int offset, int pageSize);
 
-	public List<EmployeeModel> getEmployees(int offset, int pageSize, String query);
+	public List<EmployeeModel> getEmployees(int offset, int pageSize, String query, Integer orderColumn, String orderDirection);
 
 	public long getEmployeesCount();
+	
+	public long getEmployeesCount(String query);
 }

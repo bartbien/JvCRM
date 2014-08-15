@@ -47,15 +47,21 @@ public class EmployeeServiceImpl implements EmployeeService
 	}
 
 	@Override
-	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize, String query)
+	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize, String query, Integer orderColumn, String orderDirection)
 	{
-		return employeeDAO.getEmployees(pageNumber, pageSize, query);
+		return employeeDAO.getEmployees(pageNumber, pageSize, query, orderColumn, orderDirection);
 	}
 
 	@Override
 	public long getEmployeesCount()
 	{
 		return employeeDAO.getEmployeesCount();
+	}
+	
+	@Override
+	public long getEmployeesCount(String query)
+	{
+		return employeeDAO.getEmployeesCount(query);
 	}
 
 }

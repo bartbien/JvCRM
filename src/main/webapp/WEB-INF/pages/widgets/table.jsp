@@ -25,11 +25,13 @@
 				"serverSide": true,
 			    "ajax": '${pageContext.request.contextPath}/employee/getEmployers',
 			    "columns": [
-	                { "data": "name" },
+	                { "data": "id" },
+	                { "data": "lastName" },
+	                { "data": "firstName" },
 	                { "data": "position" },
 					{ "data": "office" },
 					{ "data": "age" },
-					{ "data": "start_date" },
+					{ "data": "startDate" },
 					{ "data": "salary" }
 	            ]
 			} );
@@ -42,7 +44,9 @@
 		<table id="example" class="display" style="display: none;" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th>Name</th>
+					<th>Id</th>
+					<th>Last name</th>
+					<th>First name</th>
 					<th>Position</th>
 					<th>Office</th>
 					<th>Age</th>
@@ -52,7 +56,9 @@
 			</thead>
 			<tfoot>
 				<tr>
-					<th>Name</th>
+					<th>Id</th>
+					<th>Last name</th>
+					<th>First name</th>
 					<th>Position</th>
 					<th>Office</th>
 					<th>Age</th>
