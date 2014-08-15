@@ -1,7 +1,5 @@
 package com.phoenixjcam.table.models;
 
-import java.util.List;
-
 public class Employee
 {
 	private String name;

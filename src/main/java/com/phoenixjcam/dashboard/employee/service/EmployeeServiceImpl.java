@@ -46,4 +46,10 @@ public class EmployeeServiceImpl implements EmployeeService
 		return employeeDAO.getEmployees(pageNumber, pageSize);
 	}
 
+	@Override
+	public long getEmployeesCount()
+	{
+		return employeeDAO.getEmployeesCount();
+	}
+
 }

@@ -17,25 +17,24 @@
 
 <script type="text/javascript" class="init">
 
-	function refreshTable()
-	{
-		$('#example').dataTable( {
-		    "ajax": '${pageContext.request.contextPath}/employee/getEmployers?pageNumber=3&pageSize=10',
-		    "columns": [
-                { "data": "name" },
-                { "data": "position" },
-				{ "data": "office" },
-				{ "data": "age" },
-				{ "data": "start_date" },
-				{ "data": "salary" },
-				{ "data": "edit" },
-				{ "data": "delete" }
-            ]
-		} );
-	}
-
 	$(document).ready(function() {
-		$('#example').css('display', 'block').dataTable();
+		$('#example')
+			.css('display', 'block')
+			.dataTable( {
+				"processing": true,
+				"serverSide": true,
+			    "ajax": '${pageContext.request.contextPath}/employee/getEmployers',
+			    "columns": [
+	                { "data": "name" },
+	                { "data": "position" },
+					{ "data": "office" },
+					{ "data": "age" },
+					{ "data": "start_date" },
+					{ "data": "salary" },
+					{ "data": "edit" },
+					{ "data": "delete" }
+	            ]
+			} );
 	});
 	
 </script>
@@ -83,8 +82,5 @@
 			</tbody> --%>
 			<tbody></tbody>
 		</table>
-		<script type="text/javascript">
-				refreshTable();
-		</script>
 	</div>
 </div>

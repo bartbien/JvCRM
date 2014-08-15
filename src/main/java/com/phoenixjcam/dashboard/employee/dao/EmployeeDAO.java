@@ -17,4 +17,6 @@ public interface EmployeeDAO
 	public List<EmployeeModel> getEmployees();
 
 	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize);
+	
+	public long getEmployeesCount();
 }

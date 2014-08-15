@@ -17,8 +17,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.phoenixjcam.dashboard.employee.model.EmployeeModel;
 import com.phoenixjcam.dashboard.employee.service.EmployeeService;
 import com.phoenixjcam.login.users.model.UserModel;
+import com.phoenixjcam.table.models.DataCover;
 import com.phoenixjcam.table.models.Employee;
-import com.phoenixjcam.table.models.TableData;
 
 @Controller
 // @RestController
@@ -137,21 +137,23 @@ public class EmployeeController
 
 	// json response
 	@RequestMapping(value = "/getEmployers", method = RequestMethod.GET)
-	public @ResponseBody TableData<Employee> getEmployers(Integer pageNumber, Integer pageSize)
+	public @ResponseBody DataCover<Employee> getEmployers(Integer draw, Integer length)
 	{
-		if (pageNumber == null || pageNumber < 1)
-			pageNumber = 1;
+		if (draw == null || draw < 1)
+			draw = 1;
 
-		if (pageSize == null || pageSize < 10)
-			pageSize = 10;
+		if (length == null || length < 10)
+			length = 10;
 
 		else
 		{
-			if (pageSize > 50)
-				pageSize = 50;
+			if (length > 100)
+				length = 100;
 		}
 
-		List<EmployeeModel> employees = employeeService.getEmployees(pageNumber, pageSize);
+		long employeesCount = employeeService.getEmployeesCount();
+		List<EmployeeModel> employees = employeeService.getEmployees(draw, length);
+		
 		List<Employee> data = new ArrayList<Employee>();
 
 		for (EmployeeModel el : employees)
@@ -169,11 +171,15 @@ public class EmployeeController
 
 			data.add(row);
 		}
-		
-		TableData<Employee> result = new TableData<Employee>();
-		result.setData(data);
 
-		return result;
+		DataCover<Employee> cover = new DataCover<Employee>();
+
+		cover.setDraw(draw);
+		cover.setRecordsTotal(employeesCount); // TODO: zapytanie do bazy
+		cover.setRecordsFiltered(employeesCount); // TODO: zapytanie do bazy
+		cover.setData(data);
+
+		return cover;
 	}
 
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)

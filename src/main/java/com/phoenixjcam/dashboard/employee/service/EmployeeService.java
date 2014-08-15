@@ -15,4 +15,6 @@ public interface EmployeeService
 	public void deleteEmployee(int id);
 
 	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize);
+
+	public long getEmployeesCount();
 }

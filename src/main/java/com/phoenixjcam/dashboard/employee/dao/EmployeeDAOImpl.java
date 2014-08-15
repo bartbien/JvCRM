@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -78,6 +80,16 @@ public class EmployeeDAOImpl implements EmployeeDAO
 		return result;
 		
 		//return getCurrentSession().createQuery("from EmployeeModel").list();
+	}
+
+	@Override
+	public long getEmployeesCount()
+	{
+		long count = (long)this.getCurrentSession().createCriteria(EmployeeModel.class)
+			.setProjection(Projections.count("emplId"))
+			.uniqueResult();
+
+		return count;
 	}
 
 }
