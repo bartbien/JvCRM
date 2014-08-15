@@ -3,6 +3,9 @@ package com.phoenixjcam.dashboard.employee.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -137,7 +141,11 @@ public class EmployeeController
 
 	// json response
 	@RequestMapping(value = "/getEmployers", method = RequestMethod.GET)
-	public @ResponseBody DataCover<Employee> getEmployers(Integer start, Integer length)
+	public @ResponseBody DataCover<Employee> getEmployers(
+		@RequestParam (value = "start") Integer start, 
+		@RequestParam (value = "length") Integer length, 
+		@RequestParam (value = "draw") Integer draw,
+		@RequestParam (value = "search[value]") String query)
 	{
 		/*if (draw == null || draw < 1)
 			draw = 1;
@@ -152,7 +160,7 @@ public class EmployeeController
 		}*/
 
 		long employeesCount = employeeService.getEmployeesCount();
-		List<EmployeeModel> employees = employeeService.getEmployees(start, length);
+		List<EmployeeModel> employees = employeeService.getEmployees(start, length, query);
 		
 		List<Employee> data = new ArrayList<Employee>();
 
@@ -174,7 +182,7 @@ public class EmployeeController
 
 		DataCover<Employee> cover = new DataCover<Employee>();
 
-		cover.setDraw(start);
+		cover.setDraw(draw);
 		cover.setRecordsTotal(employeesCount); // TODO: zapytanie do bazy
 		cover.setRecordsFiltered(employeesCount); // TODO: zapytanie do bazy
 		cover.setData(data);

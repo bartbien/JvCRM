@@ -13,13 +13,10 @@ public interface EmployeeService
 	public EmployeeModel getEmployee(int id);
 
 	public void deleteEmployee(int id);
+	
+	public List<EmployeeModel> getEmployees(int offset, int pageSize);
 
-	/**
-	 *  try to change pageNumber/ draw it's withdraw data from db in wrong way 
-	 *  draw only counts how many times client change page it doesn't tell which 
-	 *  - next or previous page customer hit 
-	 */
-	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize);
+	public List<EmployeeModel> getEmployees(int offset, int pageSize, String query);
 
 	public long getEmployeesCount();
 }

@@ -39,11 +39,17 @@ public class EmployeeServiceImpl implements EmployeeService
 	{
 		employeeDAO.deleteEmployee(id);
 	}
-
+	
 	@Override
 	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize)
 	{
 		return employeeDAO.getEmployees(pageNumber, pageSize);
+	}
+
+	@Override
+	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize, String query)
+	{
+		return employeeDAO.getEmployees(pageNumber, pageSize, query);
 	}
 
 	@Override

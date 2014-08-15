@@ -15,8 +15,10 @@ public interface EmployeeDAO
 	public void deleteEmployee(int id);
 	
 	public List<EmployeeModel> getEmployees();
+	
+	public List<EmployeeModel> getEmployees(int offset, int pageSize);
 
-	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize);
+	public List<EmployeeModel> getEmployees(int offset, int pageSize, String query);
 	
 	public long getEmployeesCount();
 }
