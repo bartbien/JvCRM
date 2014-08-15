@@ -30,9 +30,7 @@
 					{ "data": "office" },
 					{ "data": "age" },
 					{ "data": "start_date" },
-					{ "data": "salary" },
-					{ "data": "edit" },
-					{ "data": "delete" }
+					{ "data": "salary" }
 	            ]
 			} );
 	});
@@ -49,9 +47,7 @@
 					<th>Office</th>
 					<th>Age</th>
 					<th>Start date</th>
-					<th>Salary</th>
-					<th>edit</th>
-					<th>delete</th>
+					<th>Salary</th>			
 				</tr>
 			</thead>
 			<tfoot>
@@ -62,8 +58,7 @@
 					<th>Age</th>
 					<th>Start date</th>
 					<th>Salary</th>
-					<th>edit</th>
-					<th>delete</th>
+
 				</tr>
 			</tfoot>
 			<%-- <tbody>

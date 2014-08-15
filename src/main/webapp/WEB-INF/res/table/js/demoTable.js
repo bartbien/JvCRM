@@ -69,7 +69,7 @@ $(document).ready( function () {
 			} );
 		} );
 
-		// php
+/*		// php
 		var phpTab = $('ul.tabs li').eq(4).css('display', 'none');
 
 		$(document).on( 'init.dt.demoSSP', function ( e, settings ) {
@@ -93,7 +93,7 @@ $(document).ready( function () {
 					}
 				} );
 			}
-		} );
+		} );*/
 	}
 	else {
 		$('ul.tabs li').eq(3).css('display', 'none');

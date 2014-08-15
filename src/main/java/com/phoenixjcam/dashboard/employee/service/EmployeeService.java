@@ -14,6 +14,11 @@ public interface EmployeeService
 
 	public void deleteEmployee(int id);
 
+	/**
+	 *  try to change pageNumber/ draw it's withdraw data from db in wrong way 
+	 *  draw only counts how many times client change page it doesn't tell which 
+	 *  - next or previous page customer hit 
+	 */
 	public List<EmployeeModel> getEmployees(int pageNumber, int pageSize);
 
 	public long getEmployeesCount();

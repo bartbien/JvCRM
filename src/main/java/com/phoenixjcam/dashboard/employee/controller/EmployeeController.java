@@ -137,9 +137,9 @@ public class EmployeeController
 
 	// json response
 	@RequestMapping(value = "/getEmployers", method = RequestMethod.GET)
-	public @ResponseBody DataCover<Employee> getEmployers(Integer draw, Integer length)
+	public @ResponseBody DataCover<Employee> getEmployers(Integer start, Integer length)
 	{
-		if (draw == null || draw < 1)
+		/*if (draw == null || draw < 1)
 			draw = 1;
 
 		if (length == null || length < 10)
@@ -149,10 +149,10 @@ public class EmployeeController
 		{
 			if (length > 100)
 				length = 100;
-		}
+		}*/
 
 		long employeesCount = employeeService.getEmployeesCount();
-		List<EmployeeModel> employees = employeeService.getEmployees(draw, length);
+		List<EmployeeModel> employees = employeeService.getEmployees(start, length);
 		
 		List<Employee> data = new ArrayList<Employee>();
 
@@ -160,21 +160,21 @@ public class EmployeeController
 		{
 			Employee row = new Employee();
 
-			row.setName(el.getLastName() + " " + el.getFirstName());
+			row.setName(el.getEmplId() + " " +  el.getLastName() + " " + el.getFirstName());
 			row.setPosition("Position");
 			row.setOffice("Office");
 			row.setAge("Age");
 			row.setStart_date("Start date");
 			row.setSalary("Salary");
-			row.setEdit("edit");
-			row.setDelete("delete");
+//			row.setEdit("edit");
+//			row.setDelete("delete");
 
 			data.add(row);
 		}
 
 		DataCover<Employee> cover = new DataCover<Employee>();
 
-		cover.setDraw(draw);
+		cover.setDraw(start);
 		cover.setRecordsTotal(employeesCount); // TODO: zapytanie do bazy
 		cover.setRecordsFiltered(employeesCount); // TODO: zapytanie do bazy
 		cover.setData(data);
