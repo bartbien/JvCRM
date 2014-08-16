@@ -39,7 +39,6 @@ public class WebConfigurer extends WebMvcConfigurerAdapter
 	{
 		LocalSessionFactoryBuilder builder = new LocalSessionFactoryBuilder(dataSource());
 		builder.scanPackages("com.phoenixjcam.login.users.model").addProperties(getHibernateProperties());
-		builder.scanPackages("com.phoenixjcam.dashboard.users.model").addProperties(getHibernateProperties());
 		builder.scanPackages("com.phoenixjcam.dashboard.employee.model").addProperties(getHibernateProperties());
 		
 		return builder.buildSessionFactory();
@@ -59,9 +58,10 @@ public class WebConfigurer extends WebMvcConfigurerAdapter
 	{
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/loginsystem_tmp");
+		ds.setUrl("jdbc:mysql://localhost:3306/jv_crm");
 		ds.setUsername("root");
-		ds.setPassword("root");
+		//ds.setPassword("");
+		//ds.setPassword("root");
 		return ds;
 	}
 

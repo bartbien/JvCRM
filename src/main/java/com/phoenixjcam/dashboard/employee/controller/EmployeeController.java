@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.websocket.server.PathParam;
+
 
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -175,12 +175,12 @@ public class EmployeeController
 		{
 			Employee row = new Employee();
 			
-			row.setId( el.getEmplId() );
+			row.setId( el.getId() );
 			row.setLastName( el.getLastName() );
 			row.setFirstName( el.getFirstName() );
-			row.setPosition( "Position" );
-			row.setOffice( "Office" );
-			row.setAge( "Age" );
+			row.setPosition( el.getPosition() );
+			row.setOffice( el.getOffice() );
+			//row.setAge( "Age" );
 			row.setStartDate( "Start date" );
 			row.setSalary( "Salary" );
 			// row.setEdit("edit");

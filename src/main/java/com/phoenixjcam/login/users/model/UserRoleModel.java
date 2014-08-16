@@ -21,7 +21,7 @@ import javax.persistence.UniqueConstraint;
  *
  */
 @Entity
-@Table(name = "user_roles", catalog = "loginsystem_tmp", uniqueConstraints = @UniqueConstraint(columnNames = { "role", "username" }))
+@Table(name = "user_roles", catalog = "jv_crm", uniqueConstraints = @UniqueConstraint(columnNames = { "role", "username" }))
 public class UserRoleModel
 {
 	@Id

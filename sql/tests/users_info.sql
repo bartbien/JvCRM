@@ -19,3 +19,7 @@ ALTER TABLE `users` DROP COLUMN `test`;
 ---------------------------------------------------------
 
 ---------------------------------------------------------
+
+ALTER TABLE  `employees` ADD  `start_date` DATE NOT NULL AFTER  `office` ;
+
+UPDATE  `jv_crm`.`employees` SET  `start_date` =  '2014-08-07' WHERE `employees`.`id` =1;

@@ -30,7 +30,6 @@
 	                { "data": "firstName" },
 	                { "data": "position" },
 					{ "data": "office" },
-					{ "data": "age" },
 					{ "data": "startDate" },
 					{ "data": "salary" }
 	            ]
@@ -49,7 +48,6 @@
 					<th>First name</th>
 					<th>Position</th>
 					<th>Office</th>
-					<th>Age</th>
 					<th>Start date</th>
 					<th>Salary</th>			
 				</tr>
@@ -61,7 +59,6 @@
 					<th>First name</th>
 					<th>Position</th>
 					<th>Office</th>
-					<th>Age</th>
 					<th>Start date</th>
 					<th>Salary</th>
 

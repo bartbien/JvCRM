@@ -38,10 +38,10 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	@Override
 	public void updateEmployee( EmployeeModel employee )
 	{
-		EmployeeModel employeeUpdate = getEmployee( employee.getEmplId() );
-		employeeUpdate.setFirstName( employee.getFirstName() );
-		employeeUpdate.setLastName( employee.getLastName() );
-		getCurrentSession().update( employeeUpdate );
+//		EmployeeModel employeeUpdate = getEmployee( employee.getEmplId() );
+//		employeeUpdate.setFirstName( employee.getFirstName() );
+//		employeeUpdate.setLastName( employee.getLastName() );
+//		getCurrentSession().update( employeeUpdate );
 	}
 	
 	@Override
@@ -105,7 +105,7 @@ public class EmployeeDAOImpl implements EmployeeDAO
 		switch ( orderColumn )
 		{
 			case 0:
-				columnName = "emplId";
+				columnName = "id";
 				break;
 			
 			case 1:
@@ -149,7 +149,7 @@ public class EmployeeDAOImpl implements EmployeeDAO
 		
 		if ( this.isInteger( query ) )
 		{
-			Criterion id = Restrictions.like( "emplId", Integer.parseInt( query ) );
+			Criterion id = Restrictions.like( "id", Integer.parseInt( query ) );
 			disjuction = Restrictions.or( disjuction, id );
 		}
 		
@@ -175,7 +175,7 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	{
 		long count = (long)this.getCurrentSession()
 				.createCriteria( EmployeeModel.class )
-				.setProjection( Projections.count( "emplId" ) )
+				.setProjection( Projections.count( "id" ) )
 				.uniqueResult();
 		
 		return count;
@@ -184,10 +184,10 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	@Override
 	public long getEmployeesCount( String query )
 	{
-		Criteria criteria = this.getCurrentSession().createCriteria( EmployeeModel.class ).setProjection( Projections.count( "emplId" ) );
+		Criteria criteria = this.getCurrentSession().createCriteria( EmployeeModel.class ).setProjection( Projections.count( "id" ) );
 		
-		long count = (long) this.prepareQuery( criteria, query ).uniqueResult();
-		
+		long count = (long) this.prepareQuery(criteria, query).uniqueResult();
+
 		return count;
 	}
 }

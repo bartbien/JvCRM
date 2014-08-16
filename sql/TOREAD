@@ -3,8 +3,12 @@ for this project database is mysql:
 1) database name: loginsystem_tmp
 2) I table: users
 3) II table: users_roles
-4) III table: users_info
-5) ?
+
+CREATE  TABLE users (
+	username VARCHAR(60) NOT NULL ,   <- need it to be 60 chars !!!
+	password VARCHAR(60) NOT NULL , 	<- need it to be 60 chars !!!
+	enabled TINYINT NOT NULL DEFAULT 1 ,
+	PRIMARY KEY (username));
 
 password for bart: 123456
 password for phoenix: 123456

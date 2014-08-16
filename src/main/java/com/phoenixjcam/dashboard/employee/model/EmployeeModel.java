@@ -10,32 +10,59 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.context.annotation.Lazy;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
 @Entity
-@Table(name = "empl_personal_info_tmp", catalog = "loginsystem_tmp")
+@Table(name = "employees", catalog = "jv_crm")
 public class EmployeeModel implements Serializable
 {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "empl_id", unique = true, nullable = false)
-	int emplId;
+	@Column(name = "id", unique = true, nullable = false)
+	int id;
 
-	@Column(name = "first_name", nullable = false, length = 45)
-	@Lazy
-	String firstName;
-
-	@Column(name = "last_name", nullable = false, length = 45)
+	@Column(name = "last_name", nullable = false, length = 30)
 	String lastName;
 
-	public int getEmplId()
+	@Column(name = "first_name", nullable = false, length = 30)
+	String firstName;
+
+	@Column(name = "position", nullable = false, length = 30)
+	String position;
+
+	@Column(name = "office", nullable = false, length = 30)
+	String office;
+
+//	@Column(name = "start_date", nullable = false)
+//	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
+//	private DateTime startDate;
+	
+	@Column(name = "start_date", nullable = false)
+	@Type(type = "org.joda.time.DateTime")
+	private DateTime startDate;
+
+	@Column(name = "salary", nullable = false, length = 30)
+	String salary;
+
+	public int getId()
 	{
-		return emplId;
+		return id;
 	}
 
-	public void setEmplId(int emplId)
+	public void setId(int id)
 	{
-		this.emplId = emplId;
+		this.id = id;
+	}
+
+	public String getLastName()
+	{
+		return lastName;
+	}
+
+	public void setLastName(String lastName)
+	{
+		this.lastName = lastName;
 	}
 
 	public String getFirstName()
@@ -48,14 +75,44 @@ public class EmployeeModel implements Serializable
 		this.firstName = firstName;
 	}
 
-	public String getLastName()
+	public String getPosition()
 	{
-		return lastName;
+		return position;
 	}
 
-	public void setLastName(String lastName)
+	public void setPosition(String position)
 	{
-		this.lastName = lastName;
+		this.position = position;
+	}
+
+	public String getOffice()
+	{
+		return office;
+	}
+
+	public void setOffice(String office)
+	{
+		this.office = office;
+	}
+
+	public DateTime getStartDate()
+	{
+		return startDate;
+	}
+
+	public void setStartDate(DateTime startDate)
+	{
+		this.startDate = startDate;
+	}
+
+	public String getSalary()
+	{
+		return salary;
+	}
+
+	public void setSalary(String salary)
+	{
+		this.salary = salary;
 	}
 
 }
