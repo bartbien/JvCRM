@@ -39,7 +39,7 @@
 			<version>${hibernate.version}</version>
 		</dependency>
 
-		<!-- Spring  -->
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -145,7 +145,14 @@
 			<artifactId>joda-time</artifactId>
 			<version>${joda-time.version}</version>
 		</dependency>
-		
+
+		<!-- JODATIME FOR HIBERNATE -->
+		<dependency>
+			<groupId>org.jadira.usertype</groupId>
+			<artifactId>usertype.core</artifactId>
+			<version>3.0.0.CR1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

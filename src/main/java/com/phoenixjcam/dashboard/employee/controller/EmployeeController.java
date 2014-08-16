@@ -7,7 +7,13 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 
+
+
+
 import org.hibernate.annotations.Parameter;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
@@ -175,13 +181,15 @@ public class EmployeeController
 		{
 			Employee row = new Employee();
 			
+			LocalDateTime startDate = el.getStartDate();
+			
 			row.setId( el.getId() );
 			row.setLastName( el.getLastName() );
 			row.setFirstName( el.getFirstName() );
 			row.setPosition( el.getPosition() );
 			row.setOffice( el.getOffice() );
 			//row.setAge( "Age" );
-			row.setStartDate( "Start date" );
+			row.setStartDate( startDate.getDayOfMonth() + "." + startDate.getMonthOfYear() + "." + startDate.getYear());
 			row.setSalary( "Salary" );
 			// row.setEdit("edit");
 			// row.setDelete("delete");

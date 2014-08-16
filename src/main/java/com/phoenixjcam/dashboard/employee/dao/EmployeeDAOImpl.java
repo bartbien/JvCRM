@@ -6,8 +6,6 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Disjunction;
-import org.hibernate.criterion.LogicalExpression;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Property;
@@ -38,10 +36,10 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	@Override
 	public void updateEmployee( EmployeeModel employee )
 	{
-//		EmployeeModel employeeUpdate = getEmployee( employee.getEmplId() );
-//		employeeUpdate.setFirstName( employee.getFirstName() );
-//		employeeUpdate.setLastName( employee.getLastName() );
-//		getCurrentSession().update( employeeUpdate );
+		// EmployeeModel employeeUpdate = getEmployee( employee.getEmplId() );
+		// employeeUpdate.setFirstName( employee.getFirstName() );
+		// employeeUpdate.setLastName( employee.getLastName() );
+		// getCurrentSession().update( employeeUpdate );
 	}
 	
 	@Override
@@ -173,10 +171,7 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	@Override
 	public long getEmployeesCount()
 	{
-		long count = (long)this.getCurrentSession()
-				.createCriteria( EmployeeModel.class )
-				.setProjection( Projections.count( "id" ) )
-				.uniqueResult();
+		long count = (long) this.getCurrentSession().createCriteria( EmployeeModel.class ).setProjection( Projections.count( "id" ) ).uniqueResult();
 		
 		return count;
 	}
@@ -186,8 +181,8 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	{
 		Criteria criteria = this.getCurrentSession().createCriteria( EmployeeModel.class ).setProjection( Projections.count( "id" ) );
 		
-		long count = (long) this.prepareQuery(criteria, query).uniqueResult();
-
+		long count = (long) this.prepareQuery( criteria, query ).uniqueResult();
+		
 		return count;
 	}
 }

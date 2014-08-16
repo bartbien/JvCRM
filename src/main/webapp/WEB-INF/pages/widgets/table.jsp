@@ -6,7 +6,9 @@
 	href="<%=request.getContextPath()%>/res/table/css/shCore.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/res/table/css/demo.css">
-
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/res/contextMenu/css/jquery.contextMenu.css">
+	
 <%-- <script type="text/javascript" src="<%=request.getContextPath()%>/res/table/js/jquery.js"></script> --%>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/res/table/js/jquery.dataTables.js"></script>
@@ -14,6 +16,10 @@
 	src="<%=request.getContextPath()%>/res/table/js/shCore.js"></script>
 <script type="text/javascript"
 	src="<%=request.getContextPath()%>/res/table/js/demoTable.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/res/contextMenu/js/jquery.ui.position.js"></script>
+<script type="text/javascript"
+	src="<%=request.getContextPath()%>/res/contextMenu/js/jquery.contextMenu.js"></script>
 
 <script type="text/javascript" class="init">
 
@@ -34,9 +40,23 @@
 					{ "data": "salary" }
 	            ]
 			} );
+		
+		$.contextMenu({
+	        selector: '.context-menu-one', 
+	        callback: function(key, options) {
+	            var m = "clicked: " + key;
+	            window.console && console.log(m) || alert(m); 
+	        },
+	        items: {
+	            "edit": {name: "Edit", icon: "edit"},
+	            "delete": {name: "Delete", icon: "delete"}
+	        }
+	    });
 	});
 	
 </script>
+
+<div id="click" class="context-menu-one">123</div>
 
 <div class="dt-example">
 	<div class="container">

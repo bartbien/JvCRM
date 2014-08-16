@@ -46,7 +46,8 @@ salary
 + delete
 
 
-
+INSERT INTO `jv_crm`.`employees` (`id`, `last_name`, `first_name`, `position`, `office`, `start_date`, `salary`) 
+VALUES (NULL, 'eeee?', 'cio', 'cio', 'cio', NOW(), '2');
 
 
 

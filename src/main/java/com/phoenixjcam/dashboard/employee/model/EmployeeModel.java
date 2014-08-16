@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
+import org.joda.time.LocalDateTime;
 
 @Entity
 @Table(name = "employees", catalog = "jv_crm")
@@ -34,13 +35,18 @@ public class EmployeeModel implements Serializable
 	@Column(name = "office", nullable = false, length = 30)
 	String office;
 
-//	@Column(name = "start_date", nullable = false)
-//	@Type(type = "org.joda.time.contrib.hibernate.PersistentDateTime")
-//	private DateTime startDate;
+	//@Column(name = "start_date", nullable = false)
+	//@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+	//private DateTime startDate;
 	
-	@Column(name = "start_date", nullable = false)
-	@Type(type = "org.joda.time.DateTime")
-	private DateTime startDate;
+	@Column(name="start_date", nullable = false)
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+	private LocalDateTime startDate;
+	
+//	@Column(name = "start_date", nullable = false)
+//	//@Type(type = "org.joda.time.DateTime")
+//	private DateTime startDate;
+
 
 	@Column(name = "salary", nullable = false, length = 30)
 	String salary;
@@ -95,12 +101,12 @@ public class EmployeeModel implements Serializable
 		this.office = office;
 	}
 
-	public DateTime getStartDate()
+	public LocalDateTime getStartDate()
 	{
 		return startDate;
 	}
 
-	public void setStartDate(DateTime startDate)
+	public void setStartDate(LocalDateTime startDate)
 	{
 		this.startDate = startDate;
 	}
