@@ -49,7 +49,12 @@ VALUES (NULL, 'superName', 'superF', 'position', 'office', CURRENT_TIMESTAMP, '$
 
 /*---------------------------------------------------------*/
 INSERT INTO `jv_crm`.`employees` (`id`, `last_name`, `first_name`, `position`, `office`, `start_date`, `salary`) 
-VALUES (NULL, 'eeee?', 'cio', 'cio', 'cio', NOW(), '2');				
+VALUES (NULL, 'eeee?', 'cio', 'cio', 'cio', NOW(), '2');		
+
+/*-------All this update make the same result-------------*/
+UPDATE  `employees` SET position =  'testPosition :)' WHERE id =  '22';
+UPDATE employees SET position =  'testPosition :)' WHERE id =  '21';
+UPDATE  `jv_crm`.`employees` SET  `salary` =  '$100,000' WHERE  `employees`.`id` =22;
 
 
 table employee
@@ -60,7 +65,8 @@ position_id
 office_id
 start_date
 salary
-+ edit 
++ edit
++ update
 + delete
 
 

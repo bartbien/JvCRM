@@ -70,21 +70,34 @@ public class EmployeeController
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public ModelAndView editEmployee(@PathVariable Integer id)
 	{
-		ModelAndView model = new ModelAndView("workplace/employee/edit");
+		ModelAndView modelAndView = new ModelAndView("template");
+		
+
+		modelAndView.addObject("workspace", "workspace/dashboard");
+
+		modelAndView.addObject("mainColumn", "../mainColumn/edit");
+		
 		EmployeeModel employee = employeeService.getEmployee(id);
-		model.addObject("employee", employee);
-		return model;
+		modelAndView.addObject("employee", employee);
+		
+//		ModelAndView model = new ModelAndView("workplace/employee/edit");
+//		EmployeeModel employee = employeeService.getEmployee(id);
+//		model.addObject("employee", employee);
+		
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
-	public ModelAndView editEmployee(@ModelAttribute EmployeeModel employee, @PathVariable Integer id)
+	public ModelAndView editEmployee(
+/*			@ModelAttribute EmployeeModel employee, 
+			@PathVariable Integer id*/)
 	{
 		ModelAndView modelAndView = new ModelAndView("workplace/employee/list");
 
-		employeeService.updateEmployee(employee);
-
-		String message = "Employee was successfully updated.";
-		modelAndView.addObject("message", message);
+//		employeeService.updateEmployee(employee);
+//
+//		String message = "Employee was successfully updated.";
+//		modelAndView.addObject("message", message);
 
 		return modelAndView;
 	}
@@ -93,26 +106,12 @@ public class EmployeeController
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView jqTable()
 	{
+		ModelAndView modelAndView = new ModelAndView("template");
 
-		ModelAndView model = new ModelAndView("template");
+		modelAndView.addObject("workspace", "workspace/dashboard");
+		modelAndView.addObject("mainColumn", "../widgets/table");
 
-		// model.addObject("workspace", "dashboard");
-		// //model.addObject("leftColumn", "expander");
-		// model.addObject("mainColumn", "table");
-		//
-		//
-		// String message = "successfully";
-		// model.addObject("message", message);
-
-		List<EmployeeModel> employees = employeeService.getEmployees(1, 200);
-
-		model.addObject("workspace", "workspace/dashboard");
-
-		model.addObject("mainColumn", "../widgets/table");
-
-		model.addObject("employees", employees);
-
-		return model;
+		return modelAndView;
 	}
 
 	// @RequestMapping(value = "/getEmployers", method = RequestMethod.GET)
@@ -165,9 +164,11 @@ public class EmployeeController
 			row.setOffice( el.getOffice() );
 			row.setStartDate( startDate.getDayOfMonth() + "." + startDate.getMonthOfYear() + "." + startDate.getYear());
 			row.setSalary( el.getSalary() );
-			// row.setEdit("edit");
-			// row.setDelete("delete");
 			
+			row.setEdit("<a href='edit/" + el.getId() + "'>Edit</a>");
+			row.setUpdate("<a href='update/" + el.getId() + "'>Update</a>");
+			row.setDelete("<a href='delete/" + el.getId() + "'>Delete</a>");
+
 			data.add( row );
 		}
 

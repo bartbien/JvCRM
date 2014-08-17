@@ -10,8 +10,9 @@ public class Employee
 	private String age;
 	private String startDate;
 	private String salary;
-//	private String edit;
-//	private String delete;
+	private String edit;
+	private String update;
+	private String delete;
 
 	public int getId()
 	{
@@ -93,23 +94,33 @@ public class Employee
 		this.salary = salary;
 	}
 
-//	public String getEdit()
-//	{
-//		return edit;
-//	}
-//
-//	public void setEdit(String edit)
-//	{
-//		this.edit = edit;
-//	}
-//
-//	public String getDelete()
-//	{
-//		return delete;
-//	}
-//
-//	public void setDelete(String delete)
-//	{
-//		this.delete = delete;
-//	}
+	public String getEdit()
+	{
+		return edit;
+	}
+
+	public void setEdit(String edit)
+	{
+		this.edit = edit;
+	}
+	
+	public String getUpdate()
+	{
+		return update;
+	}
+
+	public void setUpdate(String update)
+	{
+		this.update = update;
+	}
+
+	public String getDelete()
+	{
+		return delete;
+	}
+
+	public void setDelete(String delete)
+	{
+		this.delete = delete;
+	}
 }

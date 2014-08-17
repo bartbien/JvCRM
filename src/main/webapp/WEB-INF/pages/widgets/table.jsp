@@ -19,6 +19,9 @@
 
 <script type="text/javascript" class="init">
 
+	var linkFirstPart = "<a href=\"${pageContext.request.contextPath}/employee/edit/";
+	var linkSecondPart = ">Edit</a>";
+	
 	$(document).ready(function() {
 		$('#example')
 			.css('display', 'block')
@@ -33,7 +36,10 @@
 	                { "data": "position" },
 					{ "data": "office" },
 					{ "data": "startDate" },
-					{ "data": "salary" }
+					{ "data": "salary" },
+					{ "data": "edit"},
+					{ "data": "update"},
+					{ "data": "delete"}
 	            ]
 			} );
 	});
@@ -44,7 +50,7 @@
 
 <div class="dt-example">
 	<div class="container">
-		<table id="example" class="display" style="display: none;" cellspacing="0" width="100%">
+		<table id="example" class="display" style="display: none;" cellspacing="0" width="750px">
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -53,7 +59,10 @@
 					<th>Position</th>
 					<th>Office</th>
 					<th>Start date</th>
-					<th>Salary</th>			
+					<th>Salary</th>	
+					<th>Edit</th>
+					<th>Update</th>	
+					<th>Delete</th>				
 				</tr>
 			</thead>
 			<tfoot>
@@ -65,7 +74,9 @@
 					<th>Office</th>
 					<th>Start date</th>
 					<th>Salary</th>
-
+					<th>Edit</th>
+					<th>Update</th>	
+					<th>Delete</th>	
 				</tr>
 			</tfoot>
 			<%-- <tbody>
