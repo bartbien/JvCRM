@@ -140,13 +140,14 @@
 			<version>${jackson.version}</version>
 		</dependency>
 
+		<!-- joda-time --> 
 		<dependency>
 			<groupId>joda-time</groupId>
 			<artifactId>joda-time</artifactId>
 			<version>${joda-time.version}</version>
 		</dependency>
 
-		<!-- JODATIME FOR HIBERNATE -->
+		<!-- joda-time for hibernate -->
 		<dependency>
 			<groupId>org.jadira.usertype</groupId>
 			<artifactId>usertype.core</artifactId>

@@ -1,4 +1,4 @@
-package com.phoenixjcam.dashboard.employee.service;
+package com.phoenixjcam.dashboard.humanResource.employee.service;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.phoenixjcam.dashboard.employee.dao.EmployeeDAO;
-import com.phoenixjcam.dashboard.employee.model.EmployeeModel;
+import com.phoenixjcam.dashboard.humanResource.employee.dao.EmployeeDAO;
+import com.phoenixjcam.dashboard.humanResource.employee.model.EmployeeModel;
 
 @Service
 @Transactional

@@ -2,12 +2,12 @@
 
 #main {
 	box-sizing: border-box;
-	width: 1000px;
+	width: 1100px;
 	margin: auto;
 }
 
 #workspace {
-	width: 1000px;
+	width: 1100px;
 	margin: auto;
 	height: 550px;
  	background: #EBEBEB; 
@@ -21,7 +21,7 @@
 }
 
 #header {
-	width: 1000px;
+	width: 1100px;
 	display: table;
 	height: 50px;
 	padding: 5px;

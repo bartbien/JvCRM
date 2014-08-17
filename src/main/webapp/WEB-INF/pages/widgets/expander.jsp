@@ -124,11 +124,11 @@
 			</div>
 			<div>
 				<ul>
-					<li><a href='<%=request.getContextPath()%>/employee/list'>List of employees</a></li>
-					<li><a href='<%=request.getContextPath()%>/employee/jqTable'>jq Table</a></li>
+					<li><a href='<%=request.getContextPath()%>/employee/list'>Employees</a></li>
 					<li><a href='#'>..</a></li>
 					<li><a href='#'>..</a></li>
 					<li><a href='#'>..</a></li>
+					<li><a href='<%=request.getContextPath()%>/popupmenu'>JQuery Popup Menu</a></li>
 				</ul>
 			</div>
 		</div>

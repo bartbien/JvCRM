@@ -1,4 +1,4 @@
-package com.phoenixjcam.dashboard.employee.model;
+package com.phoenixjcam.dashboard.humanResource.employee.model;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
 import org.joda.time.LocalDateTime;
 
 @Entity
@@ -35,18 +34,9 @@ public class EmployeeModel implements Serializable
 	@Column(name = "office", nullable = false, length = 30)
 	String office;
 
-	//@Column(name = "start_date", nullable = false)
-	//@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-	//private DateTime startDate;
-	
-	@Column(name="start_date", nullable = false)
-	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
+	@Column(name = "start_date", nullable = false)
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDateTime")
 	private LocalDateTime startDate;
-	
-//	@Column(name = "start_date", nullable = false)
-//	//@Type(type = "org.joda.time.DateTime")
-//	private DateTime startDate;
-
 
 	@Column(name = "salary", nullable = false, length = 30)
 	String salary;

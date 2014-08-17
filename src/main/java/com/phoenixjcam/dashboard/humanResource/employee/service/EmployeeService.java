@@ -1,10 +1,8 @@
-package com.phoenixjcam.dashboard.employee.service;
+package com.phoenixjcam.dashboard.humanResource.employee.service;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestParam;
-
-import com.phoenixjcam.dashboard.employee.model.EmployeeModel;
+import com.phoenixjcam.dashboard.humanResource.employee.model.EmployeeModel;
 
 public interface EmployeeService
 {
