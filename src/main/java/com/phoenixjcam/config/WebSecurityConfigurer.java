@@ -59,10 +59,14 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter
 		.and()
 		.logout()
 		.logoutSuccessUrl("/login?logout")
+		//.and()
+		//.csrf() // Cross-site request forgery (a one-click attack or session riding )
+		//.and()
+		//.exceptionHandling()
+		//.accessDeniedPage("/statusCode/403")
+		//.accessDeniedPage("/403")
 		.and()
-		.csrf() // Cross-site request forgery (a one-click attack or session riding )
-		.and()
-		.exceptionHandling()
-		.accessDeniedPage("/403");
+		.csrf().disable();
+		//.disable(); // Cross-site request forgery (a one-click attack or session riding )
 	}
 }

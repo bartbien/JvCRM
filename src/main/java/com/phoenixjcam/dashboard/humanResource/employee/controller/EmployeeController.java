@@ -89,8 +89,8 @@ public class EmployeeController
 
 	@RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
 	public ModelAndView editEmployee(
-/*			@ModelAttribute EmployeeModel employee, 
-			@PathVariable Integer id*/)
+			@ModelAttribute EmployeeModel employee, 
+			@PathVariable Integer id)
 	{
 		ModelAndView modelAndView = new ModelAndView("workplace/employee/list");
 
