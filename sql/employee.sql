@@ -69,6 +69,24 @@ salary
 + update
 + delete
 
+/*---------------------------------------------------------*/
+SELECT `position`, count(*) AS `count` FROM `employees` GROUP BY `position`
+SELECT `position`, MAX(`salary`) AS `max_salary`, count(*) AS `count` FROM `employees` GROUP BY `position`
+SELECT `position`, MIN(`salary`) AS `min_salary`, MAX(`salary`) AS `max_salary`, count(*) AS `count` FROM `employees` GROUP BY `position`
+UPDATE `employees` SET `salary`=FLOOR(RAND() * 500) WHERE 1
+
+SELECT 
+	`position`, 
+	AVG(`salary`) AS `avg_salary`, 
+	MIN(`salary`) AS `min_salary`, 
+	MAX(`salary`) AS `max_salary`, 
+	count(*) AS `count` 
+FROM `employees` GROUP BY `position`
+
+http://dev.mysql.com/doc/refman/5.0/en/group-by-functions.html#function_avg
+
+/*---------------------------------------------------------*/
+
 
 
 

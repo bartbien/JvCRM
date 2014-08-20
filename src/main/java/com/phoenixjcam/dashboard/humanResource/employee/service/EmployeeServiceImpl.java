@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.phoenixjcam.dashboard.humanResource.employee.dao.EmployeeDAO;
+import com.phoenixjcam.dashboard.humanResource.employee.mediators.SalaryStatModel;
 import com.phoenixjcam.dashboard.humanResource.employee.model.EmployeeModel;
 
 @Service
@@ -64,4 +65,9 @@ public class EmployeeServiceImpl implements EmployeeService
 		return employeeDAO.getEmployeesCount(query);
 	}
 
+	@Override
+	public List<SalaryStatModel> getSalaryStats()
+	{
+		return employeeDAO.getSalaryStats();
+	}
 }

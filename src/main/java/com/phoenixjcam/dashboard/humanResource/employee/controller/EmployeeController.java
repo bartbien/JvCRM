@@ -1,8 +1,10 @@
 package com.phoenixjcam.dashboard.humanResource.employee.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.codehaus.jackson.map.ObjectMapper;
 import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.phoenixjcam.dashboard.humanResource.employee.mediators.SalaryStatModel;
 import com.phoenixjcam.dashboard.humanResource.employee.model.EmployeeModel;
 import com.phoenixjcam.dashboard.humanResource.employee.service.EmployeeService;
 import com.phoenixjcam.table.models.DataCover;
@@ -194,4 +197,30 @@ public class EmployeeController
 
 		return null;
 	}
+	
+	@RequestMapping(value = "/salaryStats", method = RequestMethod.GET)
+	public ModelAndView getSalaryStats()
+	{
+		ModelAndView modelAndView = new ModelAndView("template");
+
+		modelAndView.addObject("workspace", "workspace/dashboard");
+		modelAndView.addObject("mainColumn", "../widgets/salaryStats");
+
+		List<SalaryStatModel> list = this.employeeService.getSalaryStats();
+		ObjectMapper mapper = new ObjectMapper();
+		
+		try
+		{
+			String json = mapper.writeValueAsString(list);
+			modelAndView.addObject("json", json);
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return modelAndView;
+	}
+	
 }

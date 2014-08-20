@@ -2,6 +2,7 @@ package com.phoenixjcam.dashboard.humanResource.employee.service;
 
 import java.util.List;
 
+import com.phoenixjcam.dashboard.humanResource.employee.mediators.SalaryStatModel;
 import com.phoenixjcam.dashboard.humanResource.employee.model.EmployeeModel;
 
 public interface EmployeeService
@@ -21,4 +22,6 @@ public interface EmployeeService
 	public long getEmployeesCount();
 	
 	public long getEmployeesCount(String query);
+
+	public List<SalaryStatModel> getSalaryStats();
 }

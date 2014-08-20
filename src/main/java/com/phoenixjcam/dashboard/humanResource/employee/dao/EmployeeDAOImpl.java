@@ -1,5 +1,6 @@
 package com.phoenixjcam.dashboard.humanResource.employee.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -10,9 +11,12 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.ResultTransformer;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.phoenixjcam.dashboard.humanResource.employee.mediators.SalaryStatModel;
 import com.phoenixjcam.dashboard.humanResource.employee.model.EmployeeModel;
 
 @Repository
@@ -183,5 +187,47 @@ public class EmployeeDAOImpl implements EmployeeDAO
 		long count = (long) this.prepareQuery(criteria, query).uniqueResult();
 
 		return count;
+	}
+	
+	@Override
+	public List<SalaryStatModel> getSalaryStats()
+	{
+		List<SalaryStatModel> result = this.getCurrentSession()
+				.createCriteria(EmployeeModel.class)
+				.setProjection(Projections.projectionList()
+					.add(Projections.groupProperty("position"))
+					.add(Projections.avg("salary"), "averageSalary")
+					.add(Projections.min("salary"), "minSalary")
+	                .add(Projections.max("salary"), "maxSalary")
+	                .add(Projections.rowCount(), "count")
+				)
+				.setResultTransformer(new ResultTransformer() {
+
+					@Override
+					public Object transformTuple(Object[] tuple, String[] aliases)
+					{
+						SalaryStatModel model = new SalaryStatModel();
+						
+						model.setPosition((String)tuple[0]);
+						model.setAverageSalary((double)tuple[1]);
+						model.setMinSalary(Double.parseDouble((String) tuple[2]));
+						model.setMaxSalary(Double.parseDouble((String) tuple[3]));
+						model.setCount((long)tuple[4]);
+						
+						return model;
+					}
+
+					@Override
+					public List transformList(List collection)
+					{
+						return collection;
+					}
+					
+				})
+//				.setResultTransformer(Transformers.aliasToBean(SalaryStatModel.class)
+//						.transformList(new ArrayList<E>))
+				.list();
+		
+		return result;
 	}
 }

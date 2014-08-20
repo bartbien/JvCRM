@@ -110,5 +110,4 @@ public class EmployeeModel implements Serializable
 	{
 		this.salary = salary;
 	}
-
 }
