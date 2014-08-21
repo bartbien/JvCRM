@@ -44,9 +44,6 @@
 					<input class="blue-style-btn" type="submit" name="submit" value="Login">
 				</div>
 				
-				<!-- Cross-site request forgery (a one-click attack or session riding ) -->
-				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-				
 				<div class="account-register-btn">
 					<input class="blue-style-btn" type="button" value="Sign up" onclick="location.replace('<%=request.getContextPath()%>/register')" />
 				</div>

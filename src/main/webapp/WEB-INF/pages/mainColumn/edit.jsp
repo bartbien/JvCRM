@@ -27,6 +27,3 @@
 		</tbody>
 	</table>
 </form:form>
-
-</body>
-</html>

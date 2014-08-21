@@ -25,7 +25,7 @@ public class DashboardController
 	 * @param pageSize
 	 * @return
 	 */
-	@RequestMapping(value = { "/dashboard", "/home" }, method = RequestMethod.GET)
+	@RequestMapping(value = "/dashboard", method = RequestMethod.GET)
 	public ModelAndView dashboardPage(Integer pageNumber, Integer pageSize)
 	{
 		ModelAndView modelAndView = new ModelAndView();
@@ -39,18 +39,22 @@ public class DashboardController
 		return modelAndView;
 	}
 
-	// // only for admin role
-	// @RequestMapping(value = "/admin", method = RequestMethod.GET)
-	// public ModelAndView adminPage()
-	// {
-	// ModelAndView model = new ModelAndView();
-	//
-	// model.addObject("title", "Spring Security");
-	// model.addObject("message", "only admin has rights to show this page");
-	// model.setViewName("admin");
-	//
-	// return model;
-	// }
+	// only for admin role
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public ModelAndView adminPage()
+	{
+		ModelAndView modelAndView = new ModelAndView();
+
+		modelAndView.setViewName("template");
+		
+		modelAndView.addObject("workspace", "workspace/dashboard");
+		modelAndView.addObject("mainColumn", "../workspace/admin");
+		
+		modelAndView.addObject("title", "Spring Security");
+		modelAndView.addObject("message", "only admin has rights to show this page");
+		
+		return modelAndView;
+	}
 
 	// // for all logged users
 	// @RequestMapping(value = "/email", method = RequestMethod.GET)

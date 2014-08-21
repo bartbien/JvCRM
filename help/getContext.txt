@@ -1,0 +1,16 @@
+Instead using entire link we can make as below
+
+To link resource like css, js:
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/style/sample.css" />
+    <script src="${pageContext.request.contextPath}/js/sample.js"></script>
+
+To simply make a link:
+   <a id=".." class=".." href="${pageContext.request.contextPath}/jsp/sample.jsp">....</a>
+
+
+There is also jsp method to do it like:
+   <link rel="stylesheet" href="<%=request.getContextPath()%>/style/sample.css" />
+   <script type="text/javascript" src="<%=request.getContextPath()%>/js/sample.js"></script>
+
+To simply make a link:
+   <a id=".." class=".." href="<%=request.getContextPath()%>/jsp/sample.jsp">....</a>

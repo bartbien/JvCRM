@@ -28,7 +28,7 @@
 			.dataTable( {
 				"processing": true,
 				"serverSide": true,
-			    "ajax": '${pageContext.request.contextPath}/employee/getEmployers',
+			    "ajax": '${pageContext.request.contextPath}/dashboard/employee/getEmployers',
 			    "columns": [
 	                { "data": "id" },
 	                { "data": "lastName" },

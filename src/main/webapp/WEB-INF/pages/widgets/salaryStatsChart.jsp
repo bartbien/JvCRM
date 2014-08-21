@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script type="text/javascript"
-	src="<%=request.getContextPath()%>/res/chart/js/Chart.js"></script>
+	src="<%=request.getContextPath()%>/res/chartjsorg/js/Chart.js"></script>
 
 <div style="padding: 5px; width: 100%;">
 	<canvas id="canvas" height="450" width="600"></canvas>

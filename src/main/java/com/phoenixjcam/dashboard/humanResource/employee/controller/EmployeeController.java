@@ -24,7 +24,7 @@ import com.phoenixjcam.table.models.Employee;
 
 @Controller
 // @RestController
-@RequestMapping(value = "employee")
+@RequestMapping(value = "dashboard/employee")
 public class EmployeeController
 {
 	@Autowired
@@ -198,13 +198,13 @@ public class EmployeeController
 		return null;
 	}
 	
-	@RequestMapping(value = "/salaryStats", method = RequestMethod.GET)
+	@RequestMapping(value = "/salaryStatsChart", method = RequestMethod.GET)
 	public ModelAndView getSalaryStats()
 	{
 		ModelAndView modelAndView = new ModelAndView("template");
 
 		modelAndView.addObject("workspace", "workspace/dashboard");
-		modelAndView.addObject("mainColumn", "../widgets/salaryStats");
+		modelAndView.addObject("mainColumn", "../widgets/salaryStatsChart");
 
 		List<SalaryStatModel> list = this.employeeService.getSalaryStats();
 		ObjectMapper mapper = new ObjectMapper();
@@ -219,6 +219,41 @@ public class EmployeeController
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/jqxChart", method = RequestMethod.GET)
+	public ModelAndView getJqxChart()
+	{
+		ModelAndView modelAndView = new ModelAndView("template");
+
+		modelAndView.addObject("workspace", "workspace/dashboard");
+		modelAndView.addObject("mainColumn", "../widgets/jqxChart/jqxChart");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/jqxChartXml", method = RequestMethod.GET)
+	public ModelAndView getJqxChartTest()
+	{
+		ModelAndView modelAndView = new ModelAndView("widgets/jqxChart/jqxChartXml");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/jqxChartVar", method = RequestMethod.GET)
+	public ModelAndView getJqxChartVar()
+	{
+		ModelAndView modelAndView = new ModelAndView("widgets/jqxChart/chart_var");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/jqxChartTxt", method = RequestMethod.GET)
+	public ModelAndView getJqxChartTxt()
+	{
+		ModelAndView modelAndView = new ModelAndView("widgets/jqxChart/chart_txt");
 		
 		return modelAndView;
 	}

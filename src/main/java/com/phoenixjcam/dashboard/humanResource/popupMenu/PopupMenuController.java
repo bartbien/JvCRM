@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping(value = "/dashboard")
 public class PopupMenuController
 {
 	@RequestMapping(value = "/popupmenu", method = RequestMethod.GET)
