@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Orders>
+  <Order>
+    <Date>1/1/2011</Date>
+    <Quantity>10</Quantity>
+    <Description>Beverages</Description>
+  </Order>
+  <Order>
+    <Date>2/2/2011</Date>
+    <Quantity>15</Quantity>
+    <Description>Condiments</Description>
+  </Order>
+  <Order>
+    <Date>3/3/2011</Date>
+    <Quantity>20</Quantity>
+    <Description>Grains/Cereals</Description>
+  </Order>
+  <Order>
+    <Date>4/6/2011</Date>
+    <Quantity>30</Quantity>
+    <Description>Beverages</Description>
+  </Order>
+  <Order>
+    <Date>5/10/2011</Date>
+    <Quantity>40</Quantity>
+    <Description>Beverages</Description>
+  </Order>
+  <Order>
+    <Date>5/12/2011</Date>
+    <Quantity>50</Quantity>
+    <Description>Grains/Cereals</Description>
+  </Order>
+</Orders>

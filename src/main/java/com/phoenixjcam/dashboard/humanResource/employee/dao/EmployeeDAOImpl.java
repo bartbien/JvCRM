@@ -1,6 +1,5 @@
 package com.phoenixjcam.dashboard.humanResource.employee.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -12,7 +11,6 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Property;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.transform.ResultTransformer;
-import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -192,6 +190,7 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	@Override
 	public List<SalaryStatModel> getSalaryStats()
 	{
+		@SuppressWarnings("unchecked")
 		List<SalaryStatModel> result = this.getCurrentSession()
 				.createCriteria(EmployeeModel.class)
 				.setProjection(Projections.projectionList()
@@ -202,6 +201,8 @@ public class EmployeeDAOImpl implements EmployeeDAO
 	                .add(Projections.rowCount(), "count")
 				)
 				.setResultTransformer(new ResultTransformer() {
+
+					private static final long serialVersionUID = 1L;
 
 					@Override
 					public Object transformTuple(Object[] tuple, String[] aliases)
@@ -217,6 +218,7 @@ public class EmployeeDAOImpl implements EmployeeDAO
 						return model;
 					}
 
+					@SuppressWarnings("rawtypes")
 					@Override
 					public List transformList(List collection)
 					{
