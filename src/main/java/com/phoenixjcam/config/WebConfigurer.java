@@ -62,7 +62,7 @@ public class WebConfigurer extends WebMvcConfigurerAdapter
 		ds.setUrl("jdbc:mysql://localhost:3306/jv_crm");
 		ds.setUsername("root");
 		//ds.setPassword("");
-		//ds.setPassword("root");
+		ds.setPassword("root");
 		return ds;
 	}
 

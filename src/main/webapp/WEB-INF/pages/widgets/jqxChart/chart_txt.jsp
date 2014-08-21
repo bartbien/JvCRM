@@ -20,7 +20,7 @@
                     { name: 'DebtPercent' },
                     { name: 'Debt' }
                 ],
-                url: 'gdp_dept_2010.txt'
+                url: '${ pageContext.request.contextPath }/res/chartjqx/chartTxt/gdp_dept_2010.txt'
             };
 
             var dataAdapter = new $.jqx.dataAdapter(source, { async: false, autoBind: true, loadError: function (xhr, status, error) { alert('Error loading "' + source.url + '" : ' + error);} });

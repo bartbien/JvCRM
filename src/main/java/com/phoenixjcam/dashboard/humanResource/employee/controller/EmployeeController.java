@@ -168,9 +168,9 @@ public class EmployeeController
 			row.setStartDate( startDate.getDayOfMonth() + "." + startDate.getMonthOfYear() + "." + startDate.getYear());
 			row.setSalary( el.getSalary() );
 			
-			row.setEdit("<a href='edit/" + el.getId() + "'>Edit</a>");
-			row.setUpdate("<a href='update/" + el.getId() + "'>Update</a>");
-			row.setDelete("<a href='delete/" + el.getId() + "'>Delete</a>");
+//			row.setEdit("<a href='edit/" + el.getId() + "'>Edit</a>");
+//			row.setUpdate("<a href='update/" + el.getId() + "'>Update</a>");
+//			row.setDelete("<a href='delete/" + el.getId() + "'>Delete</a>");
 
 			data.add( row );
 		}

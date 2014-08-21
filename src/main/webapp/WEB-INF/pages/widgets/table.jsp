@@ -30,20 +30,35 @@
 				"serverSide": true,
 			    "ajax": '${pageContext.request.contextPath}/dashboard/employee/getEmployers',
 			    "columns": [
-	                { "data": "id" },
+	                { "data": null },
+	               	{ "data": "id" },
 	                { "data": "lastName" },
 	                { "data": "firstName" },
 	                { "data": "position" },
 					{ "data": "office" },
 					{ "data": "startDate" },
 					{ "data": "salary" },
-					{ "data": "edit"},
-					{ "data": "update"},
-					{ "data": "delete"}
-	            ]
-			} );
+					{ "data": null},
+					{ "data": null},
+					{ "data": null}
+	            ],
+				"fnRowCallback" : function(nRow, aData, iDisplayIndex) {
+					nRow.innerHTML = "<td><img src=\"test.png\" /></td>"
+						+ "<td>" + aData.id + "</td>"
+						+ "<td>" + aData.lastName + "</td>"
+						+ "<td>" + aData.firstName + "</td>"
+						+ "<td>" + aData.position + "</td>"
+						+ "<td>" + aData.office + "</td>"
+						+ "<td>" + aData.startDate + "</td>"
+						+ "<td>" + aData.salary + "</td>"
+						+ "<td><a href=\"edit/" + aData.id + "\">Edit</a></td>"
+						+ "<td><a href=\"update/" + aData.id + "\">Update</a></td>"
+						+ "<td><a href=\"delete/" + aData.id + "\">Delete</a></td>";
+					
+					return nRow;
+				}
+			});
 	});
-	
 </script>
 
 
@@ -53,6 +68,7 @@
 		<table id="example" class="display" style="display: none;" cellspacing="0" width="750px">
 			<thead>
 				<tr>
+					<th></th>
 					<th>Id</th>
 					<th>Last name</th>
 					<th>First name</th>
@@ -67,6 +83,7 @@
 			</thead>
 			<tfoot>
 				<tr>
+					<th></th>
 					<th>Id</th>
 					<th>Last name</th>
 					<th>First name</th>
