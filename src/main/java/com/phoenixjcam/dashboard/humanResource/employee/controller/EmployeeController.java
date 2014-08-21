@@ -229,15 +229,25 @@ public class EmployeeController
 		ModelAndView modelAndView = new ModelAndView("template");
 
 		modelAndView.addObject("workspace", "workspace/dashboard");
-		modelAndView.addObject("mainColumn", "../widgets/jqxChart/jqxChart");
+		modelAndView.addObject("mainColumn", "../widgets/jqxChart");
 		
 		return modelAndView;
 	}
 	
+	// ---------------------------------------- chart tests -----------------------
+	
 	@RequestMapping(value = "/jqxChartXml", method = RequestMethod.GET)
 	public ModelAndView getJqxChartTest()
 	{
-		ModelAndView modelAndView = new ModelAndView("widgets/jqxChart/jqxChartXml");
+		ModelAndView modelAndView = new ModelAndView("widgets/jqxChart/chart_xml");
+		
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/jqxChartJson", method = RequestMethod.GET)
+	public ModelAndView getJqxJsonTest()
+	{
+		ModelAndView modelAndView = new ModelAndView("widgets/jqxChart/chart_json");
 		
 		return modelAndView;
 	}

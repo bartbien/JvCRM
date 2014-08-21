@@ -43,6 +43,7 @@
 					<li><a href="${ pageContext.request.contextPath }/dashboard/employee/salaryStatsChart">Chart chartjs.org</a></li>
 					<li><a href="${ pageContext.request.contextPath }/dashboard/employee/jqxChart">Chart jqx</a></li>
 					<li><a href="${ pageContext.request.contextPath }/dashboard/employee/jqxChartXml">Chart jqx xml</a></li>
+					<li><a href="${ pageContext.request.contextPath }/dashboard/employee/jqxChartJson">Chart jqx json</a></li>
 					<li><a href="${ pageContext.request.contextPath }/dashboard/employee/jqxChartVar">Chart jqx var</a></li>
 					<li><a href="${ pageContext.request.contextPath }/dashboard/employee/jqxChartTxt">Chart jqx txt</a></li>
 				</ul>

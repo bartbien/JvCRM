@@ -1,13 +1,11 @@
-<html lang="en">
-<head>
-    <title id='Description'>jqxChart Line Series Example</title>
 
-<link rel="stylesheet" href="${ pageContext.request.contextPath }/res/chartjqx/ordersChartXml/css/jqx.base.css" />
-<script type="text/javascript" src="${ pageContext.request.contextPath }/res/chartjqx/ordersChartXml/js/jquery-1.10.2.min.js"></script>
-<script type="text/javascript" src="${ pageContext.request.contextPath }/res/chartjqx/ordersChartXml/js/jqxcore.js"></script>
-<script type="text/javascript" src="${ pageContext.request.contextPath }/res/chartjqx/ordersChartXml/js/jqxdata.js"></script>
-<script type="text/javascript" src="${ pageContext.request.contextPath }/res/chartjqx/ordersChartXml/js/jqxchart.core.js"></script>
-<script type="text/javascript" src="${ pageContext.request.contextPath }/res/chartjqx/ordersChartXml/js/jqxdraw.js"></script>
+
+<link rel="stylesheet" href="${ pageContext.request.contextPath }/res/ordersChartXml/css/jqx.base.css" />
+<%-- <script type="text/javascript" src="${ pageContext.request.contextPath }/res/chartjqx/js/jquery-1.10.2.min.js"></script> --%>
+<%--  <script type="text/javascript" src="${ pageContext.request.contextPath }/res/chartjqx/js/jqxcore.js"></script> --%>
+<script type="text/javascript" src="${ pageContext.request.contextPath }/res/ordersChartXml/js/jqxdata.js"></script>
+<script type="text/javascript" src="${ pageContext.request.contextPath }/res/ordersChartXml/js/jqxchart.core.js"></script>
+<script type="text/javascript" src="${ pageContext.request.contextPath }/res/ordersChartXml/js/jqxdraw.js"></script>
 
 <!-- Ajax and XML get data from server url: '${ pageContext.request.contextPath }/res/chartjqx/orders.xml' -->
 
@@ -18,7 +16,7 @@ $(document).ready(function () {
         root: "Orders",
         record: "Order",
         datatype: "xml",
-        url: "${ pageContext.request.contextPath }/res/chartjqx/ordersChartXml/orders.xml"
+        url: '${ pageContext.request.contextPath }/res/ordersChartXml/orders.xml'
     }
     var dataAdapter = new $.jqx.dataAdapter(source);
     // prepare jqxChart settings
@@ -51,9 +49,8 @@ $(document).ready(function () {
     $('#jqxChart').jqxChart(settings);
 });
 </script>
-</head>
-<body class='default'>
-    <div id='jqxChart' style="width: 680px; height: 400px">
-    </div>
-</body>
-</html>
+
+<div class='default'>
+    <div id='jqxChart' style="width: 680px; height: 400px">
+    </div>
+</div>
