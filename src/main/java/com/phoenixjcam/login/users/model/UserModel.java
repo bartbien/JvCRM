@@ -20,7 +20,7 @@ import javax.persistence.Table;
  *
  */
 @Entity
-@Table(name = "users", catalog = "jv_crm")
+@Table(name = "users", catalog = "tomcat_jvcrm")
 public class UserModel
 {
 	@Id

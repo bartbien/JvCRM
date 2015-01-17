@@ -14,7 +14,7 @@ import org.hibernate.annotations.Type;
 import org.joda.time.LocalDateTime;
 
 @Entity
-@Table(name = "employees", catalog = "jv_crm")
+@Table(name = "employees", catalog = "tomcat_jvcrm")
 public class EmployeeModel implements Serializable
 {
 	@Id

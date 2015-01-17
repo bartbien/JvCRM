@@ -59,9 +59,9 @@ public class WebConfigurer extends WebMvcConfigurerAdapter
 	{
 		BasicDataSource ds = new BasicDataSource();
 		ds.setDriverClassName("com.mysql.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/jv_crm");
+		ds.setUrl("jdbc:mysql://localhost:3306/tomcat_jvcrm");
 		ds.setUsername("root");
-		//ds.setPassword("");
+		ds.setPassword("");
 		//ds.setPassword("root");
 		return ds;
 	}
